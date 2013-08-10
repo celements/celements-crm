@@ -39,11 +39,11 @@
 	  <property name="zip" type="string">
 	    <column name="CPCI_ZIP" length="8" />
 	  </property>
-	  <property name="cityShortName" type="string">
-	    <column name="CPCI_CITY_SHORTNAME" length="64"/>
+	  <property name="shortName" type="string">
+	    <column name="CPCI_SHORTNAME" length="64"/>
 	  </property>
-	  <property name="cityName" type="string">
-	    <column name="CPCI_CITY_NAME" length="128"/>
+	  <property name="name" type="string">
+	    <column name="CPCI_NAME" length="128"/>
 	  </property>
 	  <property name="county" type="string">
 	    <column name="CPCI_COUNTY" length="4"/>
@@ -70,11 +70,11 @@
 	  <property name="lang" type="string">
 	    <column name="CPCIN_LANG" length="5"/>
 	  </property>
-	  <property name="cityShortName" type="string">
-	    <column name="CPCIN_CITY_SHORTNAME" length="64"/>
+	  <property name="shortName" type="string">
+	    <column name="CPCIN_SHORTNAME" length="64"/>
 	  </property>
-	  <property name="cityName" type="string">
-	    <column name="CPCIN_CITY_NAME" length="128"/>
+	  <property name="name" type="string">
+	    <column name="CPCIN_NAME" length="128"/>
 	  </property>
 	  <property name="validFrom" type="timestamp">
 	    <column name="CPCIN_VALID_FROM" />
@@ -89,8 +89,8 @@
 	    <column name="CPCO_ID" not-null="true" />
 	    <generator class="assigned" />
 	  </id>
-	  <property name="countryName" type="string">
-	    <column name="CPCO_CITY_NAME" length="128"/>
+	  <property name="name" type="string">
+	    <column name="CPCO_NAME" length="128"/>
 	  </property>
 	  <property name="iso2" type="string">
 	    <column name="CPCO_ISO_NUM" length="2"/>

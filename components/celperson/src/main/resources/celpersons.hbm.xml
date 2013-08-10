@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class entity-name="CelementsPersons.PersonClass" table="celcrm_personclass">
+	  <id name="id" type="integer" unsaved-value="undefined">
+	    <column name="CPPC_ID" not-null="true" />
+	    <generator class="assigned" />
+	  </id>
+	  <property name="title" type="string">
+	    <column name="CPPC_TITLE" length="64"/>
+	  </property>
+	  <property name="firstname" type="string">
+	    <column name="CPPC_FIRST_NAME" length="128" />
+	  </property>
+	  <property name="lastname" type="string">
+	    <column name="CPPC_LAST_NAME" length="128"/>
+	  </property>
+	  <property name="sex" type="string">
+	    <column name="CPPC_SEX" length="16"/>
+	  </property>
+	  <property name="birthdate" type="timestamp">
+	    <column name="CPPC_BIRTHDATE" />
+	  </property>
+	  <property name="deathdate" type="timestamp">
+	    <column name="CPPC_DEATHDATE" />
+	  </property>
+	</class>
+
+</hibernate-mapping>

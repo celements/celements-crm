@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+  <class entity-name="CelementsOrganisation.CompanyClass" table="celcrm_company">
+    <id name="id" type="integer" unsaved-value="undefined">
+      <column name="COCC_ID" not-null="true" />
+      <generator class="assigned" />
+    </id>
+    <property name="name" type="string">
+      <column name="COCC_NAME" length="256" />
+    </property>
+    <property name="legalForm" type="string">
+      <column name="COCC_LEGAL_FORM" length="256" />
+    </property>
+    <property name="foundationDate" type="timestamp">
+      <column name="COCC_FOUNDATION_DATE" />
+    </property>
+    <property name="liquidationDate" type="timestamp">
+      <column name="COCC_LIQUIDATION_DATE" />
+    </property>
+  </class>
+  
+  <class entity-name="CelementsOrganisation.OrgUnitClass" table="celcrm_orgunit">
+    <id name="id" type="integer" unsaved-value="undefined">
+      <column name="COOUC_ID" not-null="true" />
+      <generator class="assigned" />
+    </id>
+    <property name="name" type="string">
+      <column name="COOUC_NAME" length="256" />
+    </property>
+  </class>
+
+</hibernate-mapping>

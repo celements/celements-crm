@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class entity-name="CelementsPlaces.AddressClass" table="celcrm_addressclass">
+	  <id name="id" type="integer" unsaved-value="undefined">
+	    <column name="CPAC_ID" not-null="true" />
+	    <generator class="assigned" />
+	  </id>
+	  <property name="street" type="string">
+	    <column name="CPAC_STREET" length="128"/>
+	  </property>
+	  <property name="houseNumber" type="string">
+	    <column name="CPAC_HOUSE_NUMBER" length="8"/>
+	  </property>
+	  <property name="zip" type="string">
+	    <column name="CPAC_ZIP" length="32" />
+	  </property>
+	  <property name="city" type="string">
+	    <column name="CPAC_CITY" length="128"/>
+	  </property>
+	  <property name="country" type="string">
+	    <column name="CPAC_COUNTRY" length="64"/>
+	  </property>
+	  <property name="validFrom" type="timestamp">
+	    <column name="CPAC_VALID_FROM" />
+	  </property>
+	  <property name="validUntil" type="timestamp">
+	    <column name="CPAC_VALID_UNTIL" />
+	  </property>
+	</class>
+	
+	<class entity-name="CelementsPlaces.CityClass" table="celcrm_cityclass">
+	  <id name="id" type="integer" unsaved-value="undefined">
+	    <column name="CPCI_ID" not-null="true" />
+	    <generator class="assigned" />
+	  </id>
+	  <property name="zip" type="string">
+	    <column name="CPCI_ZIP" length="8" />
+	  </property>
+	  <property name="cityShortName" type="string">
+	    <column name="CPCI_CITY_SHORTNAME" length="64"/>
+	  </property>
+	  <property name="cityName" type="string">
+	    <column name="CPCI_CITY_NAME" length="128"/>
+	  </property>
+	  <property name="county" type="string">
+	    <column name="CPCI_COUNTY" length="4"/>
+	  </property>
+	  <property name="primaryLanguage" type="string">
+	    <column name="CPCI_PRIMARY_LANGUAGE" length="5"/>
+	  </property>
+	  <property name="countryISONum" type="integer">
+	    <column name="CPCI_COUNTRY_ISO_NUM" length="3"/>
+	  </property>
+	  <property name="validFrom" type="timestamp">
+	    <column name="CPCI_VALID_FROM" />
+	  </property>
+	  <property name="validUntil" type="timestamp">
+	    <column name="CPCI_VALID_UNTIL" />
+	  </property>
+	</class>
+	
+	<class entity-name="CelementsPlaces.CityNameClass" table="celcrm_citynameclass">
+	  <id name="id" type="integer" unsaved-value="undefined">
+	    <column name="CPCIN_ID" not-null="true" />
+	    <generator class="assigned" />
+	  </id>
+	  <property name="lang" type="string">
+	    <column name="CPCIN_LANG" length="5"/>
+	  </property>
+	  <property name="cityShortName" type="string">
+	    <column name="CPCIN_CITY_SHORTNAME" length="64"/>
+	  </property>
+	  <property name="cityName" type="string">
+	    <column name="CPCIN_CITY_NAME" length="128"/>
+	  </property>
+	  <property name="validFrom" type="timestamp">
+	    <column name="CPCIN_VALID_FROM" />
+	  </property>
+	  <property name="validUntil" type="timestamp">
+	    <column name="CPCIN_VALID_UNTIL" />
+	  </property>
+	</class>
+	
+	<class entity-name="CelementsPlaces.CountryClass" table="celcrm_countryclass">
+	  <id name="id" type="integer" unsaved-value="undefined">
+	    <column name="CPCO_ID" not-null="true" />
+	    <generator class="assigned" />
+	  </id>
+	  <property name="countryName" type="string">
+	    <column name="CPCO_CITY_NAME" length="128"/>
+	  </property>
+	  <property name="iso2" type="string">
+	    <column name="CPCO_ISO_NUM" length="2"/>
+	  </property>
+	  <property name="iso3" type="string">
+	    <column name="CPCO_ISO_NUM" length="3"/>
+	  </property>
+	  <property name="isoNum" type="integer">
+	    <column name="CPCO_ISO_NUM" length="3"/>
+	  </property>
+	</class>
+
+  <class entity-name="CelementsPlaces.GeotagClass" table="celcrm_geotag">
+    <id name="id" type="integer" unsaved-value="undefined">
+      <column name="CPGC_ID" not-null="true" />
+      <generator class="assigned" />
+    </id>
+    <property name="longitude" type="float">
+      <column name="CPGC_LONGITUDE" />
+    </property>
+    <property name="latitude" type="float">
+      <column name="CPGC_LATITUDE" />
+    </property>
+    <property name="altitude" type="float">
+      <column name="CPGC_ALTITUDE" />
+    </property>
+    <property name="altitudeMode" type="string">
+      <column name="CPGC_ALTITUDE_MODE" length="128" />
+    </property>
+    <property name="validFrom" type="timestamp">
+      <column name="CPGC_VALID_FROM" />
+    </property>
+    <property name="validUntil" type="timestamp">
+      <column name="CPGC_VALID_UNTIL" />
+    </property>
+  </class>
+
+</hibernate-mapping>

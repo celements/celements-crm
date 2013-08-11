@@ -93,10 +93,10 @@
 	    <column name="CPCO_NAME" length="128"/>
 	  </property>
 	  <property name="iso2" type="string">
-	    <column name="CPCO_ISO_NUM" length="2"/>
+	    <column name="CPCO_ISO2" length="2"/>
 	  </property>
 	  <property name="iso3" type="string">
-	    <column name="CPCO_ISO_NUM" length="3"/>
+	    <column name="CPCO_ISO3" length="3"/>
 	  </property>
 	  <property name="isoNum" type="integer">
 	    <column name="CPCO_ISO_NUM" length="3"/>

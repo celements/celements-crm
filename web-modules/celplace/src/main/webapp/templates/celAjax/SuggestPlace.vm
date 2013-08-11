@@ -1,0 +1,34 @@
+#set($jsonBuilder = $services.celementsweb.getNewJSONBuilder())
+$jsonBuilder.openArray()
+#set($query = $services.lucene.createQuery())
+#set($devNull = $query.addRestriction($services.lucene.createRestriction("space", '"Places"')))
+#if("$!request.zip" != '')
+  #set($devNull = $query.addRestriction($services.lucene.createRestriction("CelementsPlaces.CityClass.zip", "$!{request.zip}")))
+#end
+#if("$!request.name" != '')
+  #set($devNull = $query.addRestriction($services.lucene.createRestriction("CelementsPlaces.CityClass.name", "$!{request.name}")))
+#end
+#if("$!request.county" != '')
+  #set($countyList = $util.getArrayList())
+  #foreach($county in $request.county.split(','))
+    #set($devNull = $countyList.add($services.lucene.createRestriction("CelementsPlaces.CityClass.county", "${Q}$county${Q}")))
+  #end
+  #set($devNull = $query.addOrRestrictionList($countyList))
+#end
+#if("$!request.countryCode" != '')
+## switzerland = 756
+  #set($devNull = $query.addRestriction($services.lucene.createRestriction("CelementsPlaces.CityClass.countryISONum", "${Q}$!{request.countryCode}${Q}")))
+#end
+#set($nowLuceneDate = $!datetool.get("yyyyMMddHHmm"))
+#set($devNull = $query.addRestriction($services.lucene.createRangeRestriction("CelementsPlaces.CityClass.validFrom", "*", $nowLuceneDate)))
+#set($devNull = $query.addRestriction($services.lucene.createRangeRestriction("CelementsPlaces.CityClass.validUntil", $nowLuceneDate, "*")))
+#set($luceneQuery = "$query.getQueryString()")
+<hr />$luceneQuery<hr />
+#set($results = $xwiki.lucene.getSearchResults($luceneQuery, "default"))
+#foreach($result in $results.results)
+$jsonBuilder.openDictionary()
+$jsonBuilder.addStringProperty('fullName', "${result.web}.${result.name}")
+$jsonBuilder.closeDictionary()
+#end
+$jsonBuilder.closeArray()
+$jsonBuilder.getJSON()

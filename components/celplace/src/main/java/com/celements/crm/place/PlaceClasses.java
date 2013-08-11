@@ -43,8 +43,10 @@ public class PlaceClasses extends AbstractClassCollection {
     needsUpdate |= bclass.addTextField("zip", "ZIP", 30);
     needsUpdate |= bclass.addTextField("city", "City", 30);
     needsUpdate |= bclass.addTextField("country", "Country", 30);
-    needsUpdate |= bclass.addDateField("validFrom", "valid from date", "dd.MM.yyyy", 0);
-    needsUpdate |= bclass.addDateField("validUntil", "valid until date", "dd.MM.yyyy", 0);
+    needsUpdate |= bclass.addDateField("validFrom", "valid from date (dd.MM.yyyy)",
+        "dd.MM.yyyy", 0);
+    needsUpdate |= bclass.addDateField("validUntil", "valid until date (dd.MM.yyyy)",
+        "dd.MM.yyyy", 0);
     
     if(!"internal".equals(bclass.getCustomMapping())){
       needsUpdate = true;
@@ -80,8 +82,10 @@ public class PlaceClasses extends AbstractClassCollection {
     needsUpdate |= bclass.addTextField("primaryLanguage", "Primary Language", 30);
     needsUpdate |= bclass.addNumberField("countryISONum", "Country ISO Number", 3,
         "integer");
-    needsUpdate |= bclass.addDateField("validFrom", "valid from date", "dd.MM.yyy", 0);
-    needsUpdate |= bclass.addDateField("validUntil", "valid until date", "dd.MM.yyy", 0);
+    needsUpdate |= bclass.addDateField("validFrom", "valid from date (dd.MM.yyyy)",
+        "dd.MM.yyyy", 0);
+    needsUpdate |= bclass.addDateField("validUntil", "valid until date (dd.MM.yyyy)",
+        "dd.MM.yyyy", 0);
     
     if(!"internal".equals(bclass.getCustomMapping())){
       needsUpdate = true;
@@ -113,8 +117,10 @@ public class PlaceClasses extends AbstractClassCollection {
     needsUpdate |= bclass.addTextField("lang", "iso language code", 5);
     needsUpdate |= bclass.addTextField("shortName", "City Short Name", 30);
     needsUpdate |= bclass.addTextField("name", "City Name", 30);
-    needsUpdate |= bclass.addDateField("validFrom", "valid from date", "dd.MM.yyy", 0);
-    needsUpdate |= bclass.addDateField("validUntil", "valid until date", "dd.MM.yyy", 0);
+    needsUpdate |= bclass.addDateField("validFrom", "valid from date (dd.MM.yyyy)",
+        "dd.MM.yyyy", 0);
+    needsUpdate |= bclass.addDateField("validUntil", "valid until date (dd.MM.yyyy)",
+        "dd.MM.yyyy", 0);
     
     if(!"internal".equals(bclass.getCustomMapping())){
       needsUpdate = true;

@@ -21,7 +21,7 @@ $jsonBuilder.openArray()
 #end
 #set($nowLuceneDate = $!datetool.get("yyyyMMddHHmm"))
 #set($devNull = $query.addRestriction($services.lucene.createRangeRestriction("CelementsPlaces.CityClass.validFrom", "*", $nowLuceneDate)))
-#set($devNull = $query.addRestriction($services.lucene.createRangeRestriction("CelementsPlaces.CityClass.validUntil", $nowLuceneDate, "*")))
+#set($devNull = $query.addRestriction($services.lucene.createRangeRestriction("CelementsPlaces.CityClass.validUntil", $nowLuceneDate, "999912312359")))
 #set($luceneQuery = "$query.getQueryString()")
 <hr />$luceneQuery<hr />
 #set($results = $xwiki.lucene.getSearchResults($luceneQuery, "default"))

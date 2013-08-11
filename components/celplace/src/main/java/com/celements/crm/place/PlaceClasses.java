@@ -43,8 +43,8 @@ public class PlaceClasses extends AbstractClassCollection {
     needsUpdate |= bclass.addTextField("zip", "ZIP", 30);
     needsUpdate |= bclass.addTextField("city", "City", 30);
     needsUpdate |= bclass.addTextField("country", "Country", 30);
-    needsUpdate |= bclass.addDateField("validFrom", "valid from date", "dd.MM.yyy", 0);
-    needsUpdate |= bclass.addDateField("validUntil", "valid until date", "dd.MM.yyy", 0);
+    needsUpdate |= bclass.addDateField("validFrom", "valid from date", "dd.MM.yyyy", 0);
+    needsUpdate |= bclass.addDateField("validUntil", "valid until date", "dd.MM.yyyy", 0);
     
     if(!"internal".equals(bclass.getCustomMapping())){
       needsUpdate = true;

@@ -5,8 +5,8 @@ $jsonBuilder.openArray()
 #if("$!request.zip" != '')
   #set($devNull = $query.addRestriction($services.lucene.createRestriction("CelementsPlaces.CityClass.zip", "$!{request.zip}")))
 #end
-#if("$!request.name" != '')
-  #set($devNull = $query.addRestriction($services.lucene.createRestriction("CelementsPlaces.CityClass.name", "$!{request.name}")))
+#if("$!request.placeName" != '')
+  #set($devNull = $query.addRestriction($services.lucene.createRestriction("CelementsPlaces.CityClass.name", "$!{request.placeName}")))
 #end
 #if("$!request.county" != '')
   #set($countyList = $util.getArrayList())

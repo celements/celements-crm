@@ -23,8 +23,8 @@ $jsonBuilder.openArray()
 #set($devNull = $query.addRestriction($services.lucene.createRangeRestriction("CelementsPlaces.CityClass.validFrom", "*", $nowLuceneDate)))
 #set($devNull = $query.addRestriction($services.lucene.createRangeRestriction("CelementsPlaces.CityClass.validUntil", $nowLuceneDate, "999912312359")))
 #set($luceneQuery = "$query.getQueryString()")
-##<hr />$luceneQuery<hr />
 #set($results = $xwiki.lucene.getSearchResults($luceneQuery, "default"))
+##<hr />$luceneQuery : $results.results.size() <hr />
 #foreach($result in $results.results)
 #set($placeDoc = $xwiki.getDocument($services.model.resolveDocument("${result.web}.${result.name}")))
 #set($placeObj = $placeDoc.getObject('CelementsPlaces.CityClass', false))

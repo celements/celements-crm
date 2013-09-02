@@ -32,7 +32,7 @@
   <artifactId>crm-place-web</artifactId>
   <packaging>war</packaging>
   <name>CRM-Place Web-Module</name>
-  <version>0.2-SNAPSHOT</version>
+  <version>0.2</version>
   <description>	</description>
   <licenses>
     <license>
@@ -45,7 +45,7 @@
     <connection>scm:git:git://github.com/celements/celements-crm</connection>
     <developerConnection>scm:git:git@github.com:celements/celements-crm.git</developerConnection>
     <url>https://github.com/celements/celements-crm</url>
-    <tag>HEAD</tag>
+    <tag>crm-place-web-0.2</tag>
   </scm>
   <properties>    
     <platform.core.version>2.33</platform.core.version>

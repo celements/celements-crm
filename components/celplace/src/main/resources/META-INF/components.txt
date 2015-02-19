@@ -1,1 +1,2 @@
 com.celements.crm.place.PlaceClasses
+com.celements.crm.place.geocoding.GeocodingService

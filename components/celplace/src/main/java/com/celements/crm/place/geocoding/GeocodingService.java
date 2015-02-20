@@ -29,19 +29,21 @@ public class GeocodingService implements IGeocodingServiceRole {
 
   public List<LatLng> geocodeAddress(String address) throws GeocodingException {
     List<LatLng> ret = new ArrayList<LatLng>();
-    GeocodingApiRequest request = GeocodingApi.geocode(getGMapsContext(), address);
-    for (GeocodingResult result : awaitResult(request)) {
-      LatLng location = result.geometry.location;
-      if (location != null) {
-        location = new LatLng(location.lat, location.lng);
-        ret.add(location);
+    if (StringUtils.isNotBlank(address)) {
+      GeocodingApiRequest request = GeocodingApi.geocode(getGMapsContext(), address);
+      for (GeocodingResult result : awaitResult(request)) {
+        LatLng location = result.geometry.location;
+        if (location != null) {
+          location = new LatLng(location.lat, location.lng);
+          ret.add(location);
+        }
       }
     }
     return ret;
   }
 
-  public List<LatLng> geocodeAddress(List<String> addressList) throws GeocodingException {
-    return geocodeAddress(StringUtils.join(addressList, ", "));
+  public List<LatLng> geocodeAddress(List<String> addressParts) throws GeocodingException {
+    return geocodeAddress(StringUtils.join(addressParts, ", "));
   }
 
   private GeoApiContext getGMapsContext() {

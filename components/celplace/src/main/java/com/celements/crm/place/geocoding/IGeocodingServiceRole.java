@@ -11,6 +11,6 @@ public interface IGeocodingServiceRole {
 
   public List<LatLng> geocodeAddress(String address) throws GeocodingException;
 
-  public List<LatLng> geocodeAddress(List<String> addressList) throws GeocodingException;
+  public List<LatLng> geocodeAddress(List<String> addressParts) throws GeocodingException;
 
 }

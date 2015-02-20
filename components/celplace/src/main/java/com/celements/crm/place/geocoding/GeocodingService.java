@@ -22,10 +22,9 @@ public class GeocodingService implements IGeocodingServiceRole {
   private static final Logger LOGGER = LoggerFactory.getLogger(GeocodingService.class);
 
   @Requirement
-  private ConfigurationSource configSource;
+  ConfigurationSource configSource;
 
-  // TODO should this be cached?
-  private GeoApiContext gMapsContext;
+  GeoApiContext gMapsContext;
 
   public List<LatLng> geocodeAddress(String address) throws GeocodingException {
     List<LatLng> ret = new ArrayList<LatLng>();
@@ -43,15 +42,15 @@ public class GeocodingService implements IGeocodingServiceRole {
   }
 
   public List<LatLng> geocodeAddress(List<String> addressParts) throws GeocodingException {
-    return geocodeAddress(StringUtils.join(addressParts, ", "));
+    return geocodeAddress(StringUtils.join(addressParts, " "));
   }
 
-  private GeoApiContext getGMapsContext() {
+  GeoApiContext getGMapsContext() {
     if (gMapsContext == null) {
       gMapsContext = new GeoApiContext();
-      gMapsContext.setApiKey(getGMapsApiKey());
-      gMapsContext.setQueryRateLimit(getGMapsQueriesPerSecond());
     }
+    gMapsContext.setApiKey(getGMapsApiKey());
+    gMapsContext.setQueryRateLimit(getGMapsQueriesPerSecond());
     return gMapsContext;
   }
 
@@ -63,7 +62,7 @@ public class GeocodingService implements IGeocodingServiceRole {
   }
 
   private int getGMapsQueriesPerSecond() {
-    Integer qps = configSource.getProperty("celements.geocoding.googlemaps.qps", 5);
+    Integer qps = configSource.getProperty("celements.geocoding.googlemaps.qps", 2);
     LOGGER.debug("getGMapsQueriesPerSecond: got '{}'", qps);
     return qps;
   }

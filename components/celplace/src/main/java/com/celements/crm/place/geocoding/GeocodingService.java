@@ -26,6 +26,7 @@ public class GeocodingService implements IGeocodingServiceRole {
 
   GeoApiContext gMapsContext;
 
+  @Override
   public List<LatLng> geocodeAddress(String address) throws GeocodingException {
     List<LatLng> ret = new ArrayList<LatLng>();
     if (StringUtils.isNotBlank(address)) {
@@ -41,6 +42,7 @@ public class GeocodingService implements IGeocodingServiceRole {
     return ret;
   }
 
+  @Override
   public List<LatLng> geocodeAddress(List<String> addressParts) throws GeocodingException {
     return geocodeAddress(StringUtils.join(addressParts, " "));
   }

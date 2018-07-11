@@ -11,4 +11,5 @@ $xwiki.parseTemplate('celMacros/loadTabRTE.vm')
 #set($cel_editobj_properties = 'longitude,latitude')
 #set($cel_editobj_readonly_properties = '')
 #parse("celTemplates/ObjectEdit.vm")
+</form>
 <!-- END loadTabRTE and Geotag -->

@@ -4,6 +4,9 @@
 $services.javascript.addExtJSfileOnce(':celcrmJS/initGoogleMapsPageType.js', 'file')
 
 #parse("celTemplates/RichTextView.vm")
+#set($docRef = $doc.getDocumentReference())
+#set($geotagClassRef = $services.model.createDocumentReference('', 'CelementsPlaces', 'GeotagClass'))
+#set($geotagObj = $services.modelAccess.getObject($docRef, $geotagClassRef))
 
 <!-- MAP -->
-<div id="googleMapsContainer" data-longitude="" data-latitude=""></div>
+<div id="googleMapsContainer" data-longitude="$geotagObj.getProperty('longitude').getValue()" data-latitude="$geotagObj.getProperty('latitude').getValue()"></div>

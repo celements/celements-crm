@@ -6,4 +6,4 @@ $services.javascript.addExtJSfileOnce(':celcrmJS/initGoogleMapsPageType.js', 'fi
 #parse("celTemplates/RichTextView.vm")
 
 <!-- MAP -->
-<div id="googleMapsContainer"></div>
+<div id="googleMapsContainer" data-longitude="" data-latitude=""></div>

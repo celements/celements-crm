@@ -1,2 +1,8 @@
 com.celements.crm.place.PlaceClasses
 com.celements.crm.place.geocoding.GeocodingService
+com.celements.crm.place.classes.CelPlaceClassPackage
+com.celements.crm.place.classes.AddressClass
+com.celements.crm.place.classes.CityClass
+com.celements.crm.place.classes.CityNameClass
+com.celements.crm.place.classes.CountryClass
+com.celements.crm.place.classes.GeotagClass

@@ -1,0 +1,2 @@
+<!-- loadTabRTE and GoogleMaps -->
+$xwiki.parseTemplate('celMacros/loadTabRTE.vm')

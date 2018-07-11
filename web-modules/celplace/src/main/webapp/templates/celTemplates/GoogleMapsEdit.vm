@@ -1,6 +1,5 @@
-<!-- loadTabRTE and GoogleMaps -->
+<!-- loadTabRTE and GoogleMaps CelementsPlaces.GeotagClass -->
 $xwiki.parseTemplate('celMacros/loadTabRTE.vm')
-CelementsPlaces
 
 #set($cel_editobj_dict_prefix = 'cel_geotag_' )
 #set($cel_embedded_editobj = true)

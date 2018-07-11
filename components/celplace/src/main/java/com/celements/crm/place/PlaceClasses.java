@@ -152,7 +152,7 @@ public class PlaceClasses extends AbstractClassCollection {
     needsUpdate |= bclass.addTextField("name", "City Name", 30);
     needsUpdate |= bclass.addTextField("iso2", "iso country code (two letters)", 2);
     needsUpdate |= bclass.addTextField("iso3", "iso country code (three letters)", 3);
-    needsUpdate |= bclass.addNumberField("isoNum", "iso country number code (three" + " digits)", 3,
+    needsUpdate |= bclass.addNumberField("isoNum", "iso country number code (three digits)", 3,
         "integer");
 
     if (!"internal".equals(bclass.getCustomMapping())) {

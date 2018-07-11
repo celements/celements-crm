@@ -2,8 +2,14 @@
   "use strict";
   
   var initGoogleMaps = function() {
+    var mapContainer = $("googleMapsContainer");
+    var longitude = mapContainer.getAttribute("data-longitude");
+    var latitude = mapContainer.getAttribute("data-latitude");
+    console.log("<<<<<<<<< initGoogleMapsPageType initGoogleMaps longitude: ", longitude);
+    console.log("<<<<<<<<< initGoogleMapsPageType initGoogleMaps latitude: ", latitude);
+    
     // The location of Uluru
-    var uluru = {lat: -25.344, lng: 131.036};
+    var uluru = {lat: latitude, lng: longitude};
     // The map, centered at Uluru
     var map = new google.maps.Map($('googleMapsContainer'), {zoom: 4, center: uluru});
     // The marker, positioned at Uluru

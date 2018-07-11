@@ -1,2 +1,14 @@
 <!-- loadTabRTE and GoogleMaps -->
 $xwiki.parseTemplate('celMacros/loadTabRTE.vm')
+CelementsPlaces
+
+#set($cel_editobj_dict_prefix = 'cel_geotag_' )
+#set($cel_embedded_editobj = true)
+#set($cel_editobj_classname = "CelementsPlaces.GeotagClass")
+#set($createIfNotExists = true)
+## ##set($cel_editobj_nb = $hiddenTagObj.getNumber())
+#set($cel_editobj_hasObjRemoveLink = false)
+#set($cel_editobj_externalForm = true)
+#set($cel_editobj_properties = 'longitude,latitude')
+#set($cel_editobj_readonly_properties = '')
+#parse("celTemplates/ObjectEdit.vm")

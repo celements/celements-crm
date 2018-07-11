@@ -3,8 +3,8 @@
   
   var initGoogleMaps = function() {
     var mapContainer = $("googleMapsContainer");
-    var longitude = mapContainer.getAttribute("data-longitude");
-    var latitude = mapContainer.getAttribute("data-latitude");
+    var longitude = parseFloat(mapContainer.getAttribute("data-longitude"));
+    var latitude = parseFloat(mapContainer.getAttribute("data-latitude"));
     console.log("<<<<<<<<< initGoogleMapsPageType initGoogleMaps longitude: ", longitude);
     console.log("<<<<<<<<< initGoogleMapsPageType initGoogleMaps latitude: ", latitude);
     

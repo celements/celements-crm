@@ -1,0 +1,6 @@
++<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDigOJfK9hDW2vO6W5US6bOdeUNLMGAg_4&amp;sensor=false&amp;callback=initLoadMap"></script>
++<link rel="stylesheet" type="text/css" href="$services.celementsweb.getSkinFile(':celRes/googleMapsPageType.css', 'file')">
++$services.javascript.addExtJSfileOnce(':celJS/initGoogleMapsPageType.js', 'file')
++#parse("celTemplates/RichTextView.vm")
+<!-- MAP -->
++<div id="googleMapsContainer"></div>

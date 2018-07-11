@@ -1,4 +1,4 @@
-<!-- loadTabRTE and GoogleMaps CelementsPlaces.GeotagClass -->
+<!-- START loadTabRTE and Geotag -->
 $xwiki.parseTemplate('celMacros/loadTabRTE.vm')
 
 #set($cel_editobj_dict_prefix = 'cel_geotag_' )
@@ -11,3 +11,4 @@ $xwiki.parseTemplate('celMacros/loadTabRTE.vm')
 #set($cel_editobj_properties = 'longitude,latitude')
 #set($cel_editobj_readonly_properties = '')
 #parse("celTemplates/ObjectEdit.vm")
+<!-- END loadTabRTE and Geotag -->

@@ -12,7 +12,7 @@ import org.xwiki.component.annotation.Component;
 import com.celements.model.classes.AbstractClassDefinition;
 import com.celements.model.classes.fields.ClassField;
 import com.celements.model.classes.fields.StringField;
-import com.celements.model.classes.fields.number.FloatField;
+import com.celements.model.classes.fields.number.DoubleField;
 
 @Immutable
 @Singleton
@@ -22,13 +22,13 @@ public class GeotagClass extends AbstractClassDefinition implements CelPlaceClas
   public static final String CLASS_NAME = "GeotagClass";
   public static final String CLASS_DEF_HINT = CLASS_SPACE + "." + CLASS_NAME;
 
-  public static final ClassField<Float> FIELD_LONGITUDE = new FloatField.Builder(CLASS_DEF_HINT,
+  public static final ClassField<Double> FIELD_LONGITUDE = new DoubleField.Builder(CLASS_DEF_HINT,
       "longitude").prettyName("Longitude").size(15).build();
 
-  public static final ClassField<Float> FIELD_LATITUDE = new FloatField.Builder(CLASS_DEF_HINT,
+  public static final ClassField<Double> FIELD_LATITUDE = new DoubleField.Builder(CLASS_DEF_HINT,
       "latitude").prettyName("Latitude").size(15).build();
 
-  public static final ClassField<Float> FIELD_ALTITUDE = new FloatField.Builder(CLASS_DEF_HINT,
+  public static final ClassField<Double> FIELD_ALTITUDE = new DoubleField.Builder(CLASS_DEF_HINT,
       "altitude").prettyName("Altitude").size(15).build();
 
   public static final ClassField<String> FIELD_ALTITUDE_MODE = new StringField.Builder(

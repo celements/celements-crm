@@ -9,4 +9,4 @@ $services.javascript.addExtJSfileOnce(':celcrmJS/initGoogleMapsPageType.js', 'fi
 #set($geotagObj = $services.modelAccess.getObject($docRef, $geotagClassRef))
 
 <!-- MAP -->
-<div id="googleMapsContainer" data-longitude="$geotagObj.getProperty('longitude').getValue()" data-latitude="$geotagObj.getProperty('latitude').getValue()"></div>
+<div id="googleMapsContainer" data-longitude="$!geotagObj.getProperty('longitude').getValue()" data-latitude="$!geotagObj.getProperty('latitude').getValue()"></div>

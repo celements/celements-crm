@@ -16,4 +16,4 @@
     initGoogleMaps();
   });
   
-})(window); 
+})(window);

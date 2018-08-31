@@ -4,7 +4,7 @@
 <hibernate-mapping>
 
 	<class entity-name="CelementsPlaces.AddressClass" table="celcrm_addressclass">
-	  <id name="id" type="long" unsaved-value="undefined">
+	  <id name="id" type="integer" unsaved-value="undefined">
 	    <column name="CPAC_ID" not-null="true" />
 	    <generator class="assigned" />
 	  </id>
@@ -32,7 +32,7 @@
 	</class>
 	
 	<class entity-name="CelementsPlaces.CityClass" table="celcrm_cityclass">
-	  <id name="id" type="long" unsaved-value="undefined">
+	  <id name="id" type="integer" unsaved-value="undefined">
 	    <column name="CPCI_ID" not-null="true" />
 	    <generator class="assigned" />
 	  </id>
@@ -63,7 +63,7 @@
 	</class>
 	
 	<class entity-name="CelementsPlaces.CityNameClass" table="celcrm_citynameclass">
-	  <id name="id" type="long" unsaved-value="undefined">
+	  <id name="id" type="integer" unsaved-value="undefined">
 	    <column name="CPCIN_ID" not-null="true" />
 	    <generator class="assigned" />
 	  </id>
@@ -85,7 +85,7 @@
 	</class>
 	
 	<class entity-name="CelementsPlaces.CountryClass" table="celcrm_countryclass">
-	  <id name="id" type="long" unsaved-value="undefined">
+	  <id name="id" type="integer" unsaved-value="undefined">
 	    <column name="CPCO_ID" not-null="true" />
 	    <generator class="assigned" />
 	  </id>
@@ -104,7 +104,7 @@
 	</class>
 
   <class entity-name="CelementsPlaces.GeotagClass" table="celcrm_geotag">
-    <id name="id" type="long" unsaved-value="undefined">
+    <id name="id" type="integer" unsaved-value="undefined">
       <column name="CPGC_ID" not-null="true" />
       <generator class="assigned" />
     </id>

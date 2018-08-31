@@ -32,8 +32,8 @@
   <artifactId>crm-place-web</artifactId>
   <packaging>war</packaging>
   <name>CRM-Place Web-Module</name>
-  <version>0.5-SNAPSHOT</version>
-  <description>	</description>
+  <version>0.6-SNAPSHOT</version>
+  <description> </description>
   <licenses>
     <license>
       <name>LGPL 2.1</name>
@@ -56,7 +56,7 @@
     <dependency>
       <groupId>com.celements</groupId>
       <artifactId>celements-crm-place</artifactId>
-      <version>0.4</version>
+      <version>0.5</version>
     </dependency>
   </dependencies>
   <build>

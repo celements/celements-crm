@@ -1,0 +1,12 @@
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDigOJfK9hDW2vO6W5US6bOdeUNLMGAg_4&amp;sensor=false&amp;callback=initLoadMap"></script>
+
+<link rel="stylesheet" type="text/css" href="$services.celementsweb.getSkinFile(':celcrmRes/googleMapsPageType.css', 'file')">
+$services.javascript.addExtJSfileOnce(':celcrmJS/initGoogleMapsPageType.js', 'file')
+
+#parse("celTemplates/RichTextView.vm")
+#set($docRef = $doc.getDocumentReference())
+#set($geotagClassRef = $services.model.createDocumentReference('', 'CelementsPlaces', 'GeotagClass'))
+#set($geotagObj = $services.modelAccess.getObject($docRef, $geotagClassRef))
+
+<!-- MAP -->
+<div id="googleMapsContainer" data-longitude="$!geotagObj.getProperty('longitude').getValue()" data-latitude="$!geotagObj.getProperty('latitude').getValue()"></div>

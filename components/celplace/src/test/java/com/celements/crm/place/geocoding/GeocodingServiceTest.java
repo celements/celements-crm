@@ -31,13 +31,13 @@ public class GeocodingServiceTest extends AbstractBridgedComponentTestCase {
   public void testGetGMapsContext() throws Exception {
     String apiKey = "asdf";
 
-    expect(confSrcMock.getProperty(eq("celements.geocoding.googlemaps.apikey"),
-        same(String.class))).andReturn(apiKey).anyTimes();
+    expect(confSrcMock.getProperty(eq("celements.geocoding.googlemaps.apikey"), same(
+        String.class))).andReturn(apiKey).anyTimes();
     expect(gMapsContextMock.setApiKey(eq(apiKey))).andReturn(gMapsContextMock).once();
-    expect(confSrcMock.getProperty(eq("celements.geocoding.googlemaps.qps"), eq(2))
-        ).andReturn(2).anyTimes();
+    expect(confSrcMock.getProperty(eq("celements.geocoding.googlemaps.qps"), eq(2))).andReturn(
+        2).anyTimes();
     expect(gMapsContextMock.setQueryRateLimit(eq(2))).andReturn(gMapsContextMock).once();
-    
+
     replayDefault();
     assertSame(gMapsContextMock, geocodingService.getGMapsContext());
     verifyDefault();

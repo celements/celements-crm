@@ -108,13 +108,13 @@
       <column name="CPGC_ID" not-null="true" />
       <generator class="assigned" />
     </id>
-    <property name="longitude" type="float">
+    <property name="longitude" type="double">
       <column name="CPGC_LONGITUDE" />
     </property>
-    <property name="latitude" type="float">
+    <property name="latitude" type="double">
       <column name="CPGC_LATITUDE" />
     </property>
-    <property name="altitude" type="float">
+    <property name="altitude" type="double">
       <column name="CPGC_ALTITUDE" />
     </property>
     <property name="altitudeMode" type="string">

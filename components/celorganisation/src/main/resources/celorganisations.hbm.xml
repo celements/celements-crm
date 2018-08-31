@@ -3,7 +3,7 @@
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
   <class entity-name="CelementsOrganisation.CompanyClass" table="celcrm_company">
-    <id name="id" type="long" unsaved-value="undefined">
+    <id name="id" type="integer" unsaved-value="undefined">
       <column name="COCC_ID" not-null="true" />
       <generator class="assigned" />
     </id>
@@ -22,7 +22,7 @@
   </class>
   
   <class entity-name="CelementsOrganisation.OrgUnitClass" table="celcrm_orgunit">
-    <id name="id" type="long" unsaved-value="undefined">
+    <id name="id" type="integer" unsaved-value="undefined">
       <column name="COOUC_ID" not-null="true" />
       <generator class="assigned" />
     </id>

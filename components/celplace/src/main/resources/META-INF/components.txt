@@ -1,4 +1,3 @@
-com.celements.crm.place.PlaceClasses
 com.celements.crm.place.geocoding.GeocodingService
 com.celements.crm.place.classes.CelPlaceClassPackage
 com.celements.crm.place.classes.AddressClass

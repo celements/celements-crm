@@ -1,6 +1,5 @@
 package com.celements.crm.place.geocoding;
 
-import static com.celements.common.test.CelementsTestUtils.*;
 import static org.easymock.EasyMock.*;
 import static org.junit.Assert.*;
 
@@ -8,11 +7,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.xwiki.configuration.ConfigurationSource;
 
-import com.celements.common.test.AbstractComponentTest;
+import com.celements.common.test.AbstractBridgedComponentTestCase;
 import com.google.maps.GeoApiContext;
 import com.xpn.xwiki.web.Utils;
 
-public class GeocodingServiceTest extends AbstractComponentTest {
+public class GeocodingServiceTest extends AbstractBridgedComponentTestCase {
 
   private GeocodingService geocodingService;
 

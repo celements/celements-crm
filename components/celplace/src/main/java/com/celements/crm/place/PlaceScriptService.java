@@ -7,7 +7,7 @@ import org.xwiki.script.service.ScriptService;
 
 import com.celements.crm.place.geocoding.GeocodingService;
 
-@Component("place")
+@Component("crmplace")
 public class PlaceScriptService implements ScriptService {
 
   @Requirement

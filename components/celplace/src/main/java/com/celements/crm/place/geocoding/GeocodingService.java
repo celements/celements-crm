@@ -68,7 +68,7 @@ public class GeocodingService implements IGeocodingServiceRole {
       classDef = Utils.getComponent(ClassDefinition.class, geotagClassName);
     } else {
       classDef = Utils.getComponent(ClassDefinition.class,
-          IGeocodingServiceRole.defaultGeotagClassName);
+          IGeocodingServiceRole.CRM_PLACE_DEFAULT_GEOTAG_CLASSNAME);
     }
     return classDef;
   }

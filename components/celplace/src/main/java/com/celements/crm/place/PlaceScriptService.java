@@ -14,7 +14,6 @@ public class PlaceScriptService implements ScriptService {
   private IGeocodingServiceRole geocodingService;
 
   public DocumentReference getGeotagClassDocRef() {
-    System.out.println("<<<<<<<<<<<<<<<<<<<< PlaceScriptService IN getGeotagClassDocRef");
     return geocodingService.getGeotagClass().getDocRef();
   }
 }

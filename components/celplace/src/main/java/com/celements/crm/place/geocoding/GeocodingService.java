@@ -59,6 +59,7 @@ public class GeocodingService implements IGeocodingServiceRole {
     return gMapsContext;
   }
 
+  @Override
   public ClassDefinition getGeotagClass() {
     String geotagClassName = configSource.getProperty(
         "celements.geocoding.celementsPlaces.geotagClassName", String.class);

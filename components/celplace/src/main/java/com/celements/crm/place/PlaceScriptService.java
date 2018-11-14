@@ -5,15 +5,16 @@ import org.xwiki.component.annotation.Requirement;
 import org.xwiki.model.reference.DocumentReference;
 import org.xwiki.script.service.ScriptService;
 
-import com.celements.crm.place.geocoding.GeocodingService;
+import com.celements.crm.place.geocoding.IGeocodingServiceRole;
 
 @Component("crmplace")
 public class PlaceScriptService implements ScriptService {
 
   @Requirement
-  private GeocodingService geocodingService;
+  private IGeocodingServiceRole geocodingService;
 
   public DocumentReference getGeotagClassDocRef() {
+    System.out.println("<<<<<<<<<<<<<<<<<<<< PlaceScriptService IN getGeotagClassDocRef");
     return geocodingService.getGeotagClass().getDocRef();
   }
 }

@@ -10,11 +10,14 @@ import org.xwiki.component.annotation.Component;
 import org.xwiki.component.annotation.Requirement;
 import org.xwiki.configuration.ConfigurationSource;
 
+import com.celements.model.classes.ClassDefinition;
+import com.google.common.base.Strings;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.GeocodingApiRequest;
 import com.google.maps.model.GeocodingResult;
 import com.google.maps.model.LatLng;
+import com.xpn.xwiki.web.Utils;
 
 @Component
 public class GeocodingService implements IGeocodingServiceRole {
@@ -56,9 +59,21 @@ public class GeocodingService implements IGeocodingServiceRole {
     return gMapsContext;
   }
 
+  public ClassDefinition getGeotagClass() {
+    String geotagClassName = configSource.getProperty(
+        "celements.geocoding.celementsPlaces.geotagClassName", String.class);
+    ClassDefinition classDef;
+    if (!Strings.isNullOrEmpty(geotagClassName)) {
+      classDef = Utils.getComponent(ClassDefinition.class, geotagClassName);
+    } else {
+      classDef = Utils.getComponent(ClassDefinition.class,
+          IGeocodingServiceRole.defaultGeotagClassName);
+    }
+    return classDef;
+  }
+
   private String getGMapsApiKey() {
-    String apiKey = configSource.getProperty("celements.geocoding.googlemaps.apikey", 
-        String.class);
+    String apiKey = configSource.getProperty("celements.geocoding.googlemaps.apikey", String.class);
     LOGGER.debug("getGMapsApiKey: got '{}'", apiKey);
     return apiKey;
   }
@@ -69,8 +84,7 @@ public class GeocodingService implements IGeocodingServiceRole {
     return qps;
   }
 
-  private GeocodingResult[] awaitResult(GeocodingApiRequest request
-      ) throws GeocodingException {
+  private GeocodingResult[] awaitResult(GeocodingApiRequest request) throws GeocodingException {
     try {
       GeocodingResult[] result = request.await();
       if (result == null) {

@@ -9,6 +9,8 @@ import com.google.maps.model.LatLng;
 @ComponentRole
 public interface IGeocodingServiceRole {
 
+  public static String defaultGeotagClassName = "CelementsPlaces.GeotagClass";
+
   public List<LatLng> geocodeAddress(String address) throws GeocodingException;
 
   public List<LatLng> geocodeAddress(List<String> addressParts) throws GeocodingException;

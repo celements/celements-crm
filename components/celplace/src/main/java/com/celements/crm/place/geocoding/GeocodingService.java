@@ -65,7 +65,12 @@ public class GeocodingService implements IGeocodingServiceRole {
         "celements.geocoding.celementsPlaces.geotagClassName", String.class);
     ClassDefinition classDef;
     if (!Strings.isNullOrEmpty(geotagClassName)) {
-      classDef = Utils.getComponent(ClassDefinition.class, geotagClassName);
+      if (Utils.getComponentManager().hasComponent(ClassDefinition.class, geotagClassName)) {
+        classDef = Utils.getComponent(ClassDefinition.class, geotagClassName);
+      } else {
+        classDef = Utils.getComponent(ClassDefinition.class,
+            IGeocodingServiceRole.CRM_PLACE_DEFAULT_GEOTAG_CLASSNAME);
+      }
     } else {
       classDef = Utils.getComponent(ClassDefinition.class,
           IGeocodingServiceRole.CRM_PLACE_DEFAULT_GEOTAG_CLASSNAME);

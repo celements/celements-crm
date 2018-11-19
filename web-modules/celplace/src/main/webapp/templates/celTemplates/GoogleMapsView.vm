@@ -5,8 +5,11 @@ $services.javascript.addExtJSfileOnce(':celcrmJS/initGoogleMapsPageType.js', 'fi
 
 #parse("celTemplates/RichTextView.vm")
 #set($docRef = $doc.getDocumentReference())
-#set($geotagClassRef = $services.crmplace.getGeotagClassDocRef())
-#set($geotagObj = $services.modelAccess.getObject($docRef, $geotagClassRef))
+#set($geotagClass = $services.crmplace.getGeotagClassDefinition())
+#if("$!geotagClass" != "")
+  #set($geotagClassRef = $geotagClass.getDocRef())
+  #set($geotagObj = $services.modelAccess.getObject($docRef, $geotagClassRef))
 
-<!-- MAP -->
-<div id="googleMapsContainer" data-longitude="$!geotagObj.getProperty('longitude').getValue()" data-latitude="$!geotagObj.getProperty('latitude').getValue()"></div>
+  <!-- MAP -->
+  <div id="googleMapsContainer" data-longitude="$!geotagObj.getProperty('longitude').getValue()" data-latitude="$!geotagObj.getProperty('latitude').getValue()"></div>
+#end

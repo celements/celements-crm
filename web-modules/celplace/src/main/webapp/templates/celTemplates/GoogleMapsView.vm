@@ -4,7 +4,7 @@
 $services.javascript.addExtJSfileOnce(':celcrmJS/initGoogleMapsPageType.js', 'file')
 
 #parse("celTemplates/RichTextView.vm")
-#set($docRef = $doc.getDocumentReference())
+#set($docRef = $celldoc.getDocumentReference())
 #set($geotagClass = $services.crmplace.getGeotagClassDefinition())
 #if("$!geotagClass" != "")
   #set($geotagClassRef = $geotagClass.getDocRef())

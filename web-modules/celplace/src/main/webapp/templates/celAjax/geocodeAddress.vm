@@ -1,5 +1,6 @@
 #set($address = "$!request.address")
 #set($jsonBuilder = $services.celementsweb.getNewJSONBuilder())
+$jsonBuilder.openDictionary()
 $jsonBuilder.addStringProperty('address', $address)
 $jsonBuilder.openProperty('geocodes')
 $jsonBuilder.openArray()
@@ -12,4 +13,5 @@ $jsonBuilder.addNumber($latLng.lng)
 $jsonBuilder.closeDictionary()
 #end
 $jsonBuilder.closeArray()
+$jsonBuilder.closeDictionary()
 $jsonBuilder.getJSON()

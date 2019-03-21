@@ -29,8 +29,8 @@ public class GeocodingScriptService implements ScriptService {
     if (rightsAccess.isLoggedIn()) {
       try {
         ret = geocodingService.geocodeAddress(address);
-      } catch (GeocodingException exc) {
-        LOGGER.warn("geocodeAddress - failed for [{}]", address, exc);
+      } catch (Exception exc) {
+        LOGGER.error("geocodeAddress - failed for [{}]", address, exc);
       }
     }
     return ret;

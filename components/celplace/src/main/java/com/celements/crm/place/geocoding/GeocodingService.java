@@ -31,7 +31,7 @@ public class GeocodingService implements IGeocodingServiceRole {
 
   @Override
   public List<LatLng> geocodeAddress(String address) throws GeocodingException {
-    List<LatLng> ret = new ArrayList<LatLng>();
+    List<LatLng> ret = new ArrayList<>();
     if (StringUtils.isNotBlank(address)) {
       GeocodingApiRequest request = GeocodingApi.geocode(getGMapsContext(), address);
       for (GeocodingResult result : awaitResult(request)) {
@@ -50,12 +50,13 @@ public class GeocodingService implements IGeocodingServiceRole {
     return geocodeAddress(StringUtils.join(addressParts, " "));
   }
 
-  GeoApiContext getGMapsContext() {
+  synchronized GeoApiContext getGMapsContext() {
     if (gMapsContext == null) {
-      gMapsContext = new GeoApiContext();
+      gMapsContext = new GeoApiContext.Builder()
+          .apiKey(getGMapsApiKey())
+          .queryRateLimit(getGMapsQueriesPerSecond())
+          .build();
     }
-    gMapsContext.setApiKey(getGMapsApiKey());
-    gMapsContext.setQueryRateLimit(getGMapsQueriesPerSecond());
     return gMapsContext;
   }
 
@@ -98,10 +99,6 @@ public class GeocodingService implements IGeocodingServiceRole {
     } catch (Exception exc) {
       throw new GeocodingException(exc);
     }
-  }
-
-  void injectConfigSource(ConfigurationSource configSource) {
-    this.configSource = configSource;
   }
 
 }

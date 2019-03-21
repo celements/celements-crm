@@ -1,0 +1,12 @@
+#set($jsonBuilder = $services.celementsweb.getNewJSONBuilder())
+$jsonBuilder.openArray()
+#foreach($latLng in $services.geocoding.geocodeAddress("$!request.address"))
+$jsonBuilder.openDictionary()
+$jsonBuilder.openProperty('lat')
+$jsonBuilder.addNumber($latLng.lat)
+$jsonBuilder.openProperty('lng')
+$jsonBuilder.addNumber($latLng.lng)
+$jsonBuilder.closeDictionary()
+#end
+$jsonBuilder.closeArray()
+$jsonBuilder.getJSON()

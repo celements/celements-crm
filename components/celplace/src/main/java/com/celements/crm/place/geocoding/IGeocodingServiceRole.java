@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 import org.xwiki.component.annotation.ComponentRole;
 
 import com.celements.model.classes.ClassDefinition;
-import com.google.maps.model.LatLng;
 
 @ComponentRole
 public interface IGeocodingServiceRole {

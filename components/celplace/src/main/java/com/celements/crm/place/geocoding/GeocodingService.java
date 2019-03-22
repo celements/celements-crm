@@ -1,5 +1,6 @@
 package com.celements.crm.place.geocoding;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +16,8 @@ import com.google.common.base.Strings;
 import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.GeocodingApiRequest;
+import com.google.maps.errors.ApiException;
 import com.google.maps.model.GeocodingResult;
-import com.google.maps.model.LatLng;
 import com.xpn.xwiki.web.Utils;
 
 @Component
@@ -31,14 +32,12 @@ public class GeocodingService implements IGeocodingServiceRole {
 
   @Override
   public List<LatLng> geocodeAddress(String address) throws GeocodingException {
-    List<LatLng> ret = new ArrayList<LatLng>();
-    if (StringUtils.isNotBlank(address)) {
+    List<LatLng> ret = new ArrayList<>();
+    if (!Strings.isNullOrEmpty(address)) {
       GeocodingApiRequest request = GeocodingApi.geocode(getGMapsContext(), address);
       for (GeocodingResult result : awaitResult(request)) {
-        LatLng location = result.geometry.location;
-        if (location != null) {
-          location = new LatLng(location.lat, location.lng);
-          ret.add(location);
+        if (result.geometry.location != null) {
+          ret.add(new LatLng(result.geometry.location));
         }
       }
     }
@@ -50,12 +49,13 @@ public class GeocodingService implements IGeocodingServiceRole {
     return geocodeAddress(StringUtils.join(addressParts, " "));
   }
 
-  GeoApiContext getGMapsContext() {
+  synchronized GeoApiContext getGMapsContext() {
     if (gMapsContext == null) {
-      gMapsContext = new GeoApiContext();
+      gMapsContext = new GeoApiContext.Builder()
+          .apiKey(getGMapsApiKey())
+          .queryRateLimit(getGMapsQueriesPerSecond())
+          .build();
     }
-    gMapsContext.setApiKey(getGMapsApiKey());
-    gMapsContext.setQueryRateLimit(getGMapsQueriesPerSecond());
     return gMapsContext;
   }
 
@@ -95,13 +95,9 @@ public class GeocodingService implements IGeocodingServiceRole {
         result = new GeocodingResult[0];
       }
       return result;
-    } catch (Exception exc) {
+    } catch (IOException | ApiException | InterruptedException exc) {
       throw new GeocodingException(exc);
     }
-  }
-
-  void injectConfigSource(ConfigurationSource configSource) {
-    this.configSource = configSource;
   }
 
 }

@@ -11,7 +11,6 @@ import org.xwiki.script.service.ScriptService;
 
 import com.celements.model.classes.ClassDefinition;
 import com.celements.rights.access.IRightsAccessFacadeRole;
-import com.google.maps.model.LatLng;
 
 @Component("geocoding")
 public class GeocodingScriptService implements ScriptService {

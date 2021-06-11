@@ -1,0 +1,14 @@
+## INPUT: geotagDocRef
+#if(!$googleMapsResourcesInit)
+  #set($googleMapsResourcesInit = true)
+  #set($apiKey = $services.crmplace.googleMapsApiKey)
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=$!{apiKey}&sensor=false&callback=initLoadMap"></script>
+  <link rel="stylesheet" type="text/css" href="$services.celementsweb.getSkinFile(':celcrmRes/googleMapsPageType.css', 'file')">
+  $services.javascript.addExtJSfileOnce(':celcrmJS/initGoogleMapsPageType.js', 'file')
+#end
+#set($geotagClass = $services.crmplace.getGeotagClassDefinition())
+#if("$!geotagClass" != "")
+  #set($geotagClassRef = $geotagClass.getDocRef())
+  #set($geotagObj = $services.modelAccess.getObject($geotagDocRef, $geotagClassRef))
+  <div class=".googleMapsContainer" data-longitude="$!geotagObj.getProperty('longitude').getValue()" data-latitude="$!geotagObj.getProperty('latitude').getValue()"></div>
+#end

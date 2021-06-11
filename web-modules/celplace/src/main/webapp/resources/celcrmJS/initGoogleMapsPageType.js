@@ -1,19 +1,18 @@
 (function(window, undefined) {
   "use strict";
   
-  var initGoogleMaps = function() {
-    var mapContainer = $("googleMapsContainer");
-    var longitude = parseFloat(mapContainer.getAttribute("data-longitude"));
-    var latitude = parseFloat(mapContainer.getAttribute("data-latitude"));
-    
-    var place = {lat: latitude, lng: longitude};
-    var map = new google.maps.Map($('googleMapsContainer'), {zoom: 15, center: place});
-    var marker = new google.maps.Marker({position: place, map: map});
-
+  const initGoogleMaps = function(mapContainer) {
+    const longitude = parseFloat(mapContainer.dataset.longitude);
+    const latitude = parseFloat(mapContainer.dataset.latitude);    
+    const place = {lat: latitude, lng: longitude};
+    const map = new google.maps.Map(mapContainer, {zoom: 15, center: place});
+    const marker = new google.maps.Marker({position: place, map: map});
+    console.debug('initGoogleMaps: map', map, 'with marker', marker);
   };
   
   celAddOnBeforeLoadListener(function() {
-    initGoogleMaps();
+    document.querySelectorAll('.googleMapsContainer')
+        .forEach(initGoogleMaps);
   });
   
 })(window);

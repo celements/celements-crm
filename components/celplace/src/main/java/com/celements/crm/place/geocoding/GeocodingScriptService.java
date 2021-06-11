@@ -7,6 +7,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.xwiki.component.annotation.Component;
 import org.xwiki.component.annotation.Requirement;
+import org.xwiki.configuration.ConfigurationSource;
 import org.xwiki.script.service.ScriptService;
 
 import com.celements.model.classes.ClassDefinition;
@@ -22,6 +23,9 @@ public class GeocodingScriptService implements ScriptService {
 
   @Requirement
   private IRightsAccessFacadeRole rightsAccess;
+
+  @Requirement
+  private ConfigurationSource configSource;
 
   public List<LatLng> geocodeAddress(String address) {
     List<LatLng> ret = new ArrayList<>();

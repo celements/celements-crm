@@ -1,19 +1,7 @@
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDigOJfK9hDW2vO6W5US6bOdeUNLMGAg_4&amp;sensor=false&amp;callback=initLoadMap"></script>
-
-<link rel="stylesheet" type="text/css" href="$services.celementsweb.getSkinFile(':celcrmRes/googleMapsPageType.css', 'file')">
-$services.javascript.addExtJSfileOnce(':celcrmJS/initGoogleMapsPageType.js', 'file')
-
 #parse("celTemplates/RichTextView.vm")
 #if("$!celldoc" != "")
-  #set($docRef = $celldoc.getDocumentReference())
+  #set($geotagDocRef = $celldoc.getDocumentReference())
 #else
-  #set($docRef = $doc.getDocumentReference())
+  #set($geotagDocRef = $doc.getDocumentReference())
 #end
-#set($geotagClass = $services.crmplace.getGeotagClassDefinition())
-#if("$!geotagClass" != "")
-  #set($geotagClassRef = $geotagClass.getDocRef())
-  #set($geotagObj = $services.modelAccess.getObject($docRef, $geotagClassRef))
-
-  <!-- MAP -->
-  <div id="googleMapsContainer" data-longitude="$!geotagObj.getProperty('longitude').getValue()" data-latitude="$!geotagObj.getProperty('latitude').getValue()"></div>
-#end
+#parse('celMacros/GoogleMap.vm')

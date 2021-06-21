@@ -1,7 +1,5 @@
 package com.celements.crm.place;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.xwiki.component.annotation.Component;
 import org.xwiki.model.reference.DocumentReference;
 
@@ -13,8 +11,6 @@ import com.xpn.xwiki.objects.classes.BaseClass;
 @Deprecated
 @Component("celements.crm.places")
 public class PlaceClasses extends AbstractClassCollection {
-
-  private static Log LOGGER = LogFactory.getFactory().getInstance(PlaceClasses.class);
 
   @Override
   public void initClasses() throws XWikiException {
@@ -205,11 +201,6 @@ public class PlaceClasses extends AbstractClassCollection {
   @Override
   public String getConfigName() {
     return "celcrmPlaces";
-  }
-
-  @Override
-  protected Log getLogger() {
-    return LOGGER;
   }
 
   private String getRegexDate(boolean allowEmpty, boolean withTime) {

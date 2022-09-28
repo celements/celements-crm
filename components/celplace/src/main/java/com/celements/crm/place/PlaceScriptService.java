@@ -1,5 +1,7 @@
 package com.celements.crm.place;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xwiki.component.annotation.Component;
 import org.xwiki.component.annotation.Requirement;
 import org.xwiki.model.reference.ClassReference;
@@ -11,11 +13,18 @@ import com.celements.model.classes.ClassDefinition;
 @Component("crmplace")
 public class PlaceScriptService implements ScriptService {
 
+  private static final Logger LOGGER = LoggerFactory.getLogger(PlaceScriptService.class);
+
   @Requirement
   private IGeocodingServiceRole geocodingService;
 
   public ClassReference getGeoTagClassRef() {
-    return geocodingService.getGeotagClass().getClassReference();
+    try {
+      return geocodingService.getGeotagClass().getClassReference();
+    } catch (Exception exc) {
+      LOGGER.info("Failed to get getGeoTagClassRef.", exc);
+      return null;
+    }
   }
 
   /**
@@ -23,6 +32,14 @@ public class PlaceScriptService implements ScriptService {
    */
   @Deprecated
   public ClassDefinition getGeotagClassDefinition() {
-    return geocodingService.getGeotagClass();
+    LOGGER.warn("Deprecated getGeotagClassDefinition is still used. This might be an security"
+        + "issue.");
+    try {
+      return geocodingService.getGeotagClass();
+    } catch (Exception exc) {
+      LOGGER.info("Failed to get getGeotagClassDefinition.", exc);
+      return null;
+    }
   }
+
 }

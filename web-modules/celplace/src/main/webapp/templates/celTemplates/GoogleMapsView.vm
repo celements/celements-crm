@@ -9,11 +9,9 @@ $services.javascript.addExtJSfileOnce(':celcrmJS/initGoogleMapsPageType.js', 'fi
 #else
   #set($docRef = $doc.getDocumentReference())
 #end
-#set($geotagClass = $services.crmplace.getGeotagClassDefinition())
-#if("$!geotagClass" != "")
-  #set($geotagClassRef = $geotagClass.getDocRef())
+#set($geotagClassRef = $services.crmplace.geotagClassRef.docRef)
+#if("$!geotagClassRef" != "")
   #set($geotagObj = $services.modelAccess.getObject($docRef, $geotagClassRef))
-
   <!-- MAP -->
   <div id="googleMapsContainer" data-longitude="$!geotagObj.getProperty('longitude').getValue()" data-latitude="$!geotagObj.getProperty('latitude').getValue()"></div>
 #end

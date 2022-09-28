@@ -10,6 +10,7 @@ $services.javascript.addExtJSfileOnce(':celcrmJS/initGoogleMapsPageType.js', 'fi
   #set($docRef = $doc.getDocumentReference())
 #end
 #set($geotagClassDocRef = $!services.crmplace.geoTagClassRef.docRef)
+  <!-- before MAP: $geotagClassDocRef -->
 #if("$!geotagClassDocRef" != "")
   #set($geotagObj = $services.modelAccess.getObject($docRef, $geotagClassDocRef))
   <!-- MAP -->

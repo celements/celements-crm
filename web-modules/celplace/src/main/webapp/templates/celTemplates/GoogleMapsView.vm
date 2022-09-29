@@ -1,7 +1,7 @@
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDigOJfK9hDW2vO6W5US6bOdeUNLMGAg_4&amp;sensor=false&amp;callback=initLoadMap"></script>
-
 <link rel="stylesheet" type="text/css" href="$services.celementsweb.getSkinFile(':celcrmRes/googleMapsPageType.css', 'file')">
-$services.javascript.addExtJSfileOnce(':celcrmJS/initGoogleMapsPageType.js', 'file')
+#set($jsService = $services.javascript)
+#set($extJsParamSync = $!jsService.createExtJSParam().setAction('file'))
+$!jsService.includeExtJsFile($extJsParamSync.setJsFile(':celcrmJS/initGoogleMapsPageType.js'))##
 
 #parse("celTemplates/RichTextView.vm")
 #if("$!celldoc" != "")
@@ -10,7 +10,6 @@ $services.javascript.addExtJSfileOnce(':celcrmJS/initGoogleMapsPageType.js', 'fi
   #set($docRef = $doc.getDocumentReference())
 #end
 #set($geotagClassDocRef = $!services.crmplace.geoTagClassRef.docRef)
-  <!-- before MAP: $geotagClassDocRef -->
 #if("$!geotagClassDocRef" != "")
   #set($geotagObj = $services.modelAccess.getObject($docRef, $geotagClassDocRef))
   <!-- MAP -->

@@ -6,10 +6,12 @@ export class CelGoogleMapsViewer {
   mapOptions;
   
   construtor(options) {
+    console.debug("start constructor");
     const theOpt = options ?? {};
     this.mapsContainerSelector = theOpt.mapsContainerSelector ?? '#googleMapsContainer';
     this.pinColor = theOpt.pinColor ?? "FF0505";
     this.mapOptions = theOpt.mapOptions ?? {};
+    console.debug("end constructor");
   }
 
   load() {
@@ -79,10 +81,17 @@ export class CelGoogleMapsViewer {
   }
   
   initLoadMap() {
+    console.debug("start initLoadMap ");
     if (this.getMapsContainer()) {
       // Create the Google Map using out element and options defined above
       const map = new google.maps.Map(this.getMapsContainer(), this.getMapOptions());
       const marker = new google.maps.Marker({
+        icon: this.getPinImage(),
+        shadow: this.getPinShadow(),
+        position : this.getPlaceCoordinates(),
+        map : map
+      });
+      console.log("initLoadMap: created marker ", marker,  {
         icon: this.getPinImage(),
         shadow: this.getPinShadow(),
         position : this.getPlaceCoordinates(),

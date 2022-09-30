@@ -22,7 +22,7 @@ export class CelGoogleMapsViewer {
       gmapJsElem.src = 'https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false'
         + '&key=' + gMapsApiKey;
       gmapJsElem.type = 'text/javascript';
-      gmapJsElem.addEventListener('load', () => this.initLoadMap);
+      gmapJsElem.addEventListener('load', () => this.initLoadMap());
       document.head.appendChild(gmapJsElem);
     } else {
       console.warn('Cannot initialize Google Maps, because of Google Maps Api key is missing.');

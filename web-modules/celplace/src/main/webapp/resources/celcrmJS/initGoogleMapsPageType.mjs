@@ -81,23 +81,27 @@ export class CelGoogleMapsViewer {
   }
   
   initLoadMap() {
-    console.debug("start initLoadMap ");
+    console.debug("start initLoadMap ", this.getMapsContainer());
     if (this.getMapsContainer()) {
-      // Create the Google Map using out element and options defined above
-      const map = new google.maps.Map(this.getMapsContainer(), this.getMapOptions());
-      const marker = new google.maps.Marker({
-        icon: this.getPinImage(),
-        shadow: this.getPinShadow(),
-        position : this.getPlaceCoordinates(),
-        map : map
-      });
-      console.log("initLoadMap: created marker ", marker,  {
-        icon: this.getPinImage(),
-        shadow: this.getPinShadow(),
-        position : this.getPlaceCoordinates(),
-        map : map
-      });
-    }
+      try {
+        // Create the Google Map using out element and options defined above
+        const map = new google.maps.Map(this.getMapsContainer(), this.getMapOptions());
+        const marker = new google.maps.Marker({
+          icon: this.getPinImage(),
+          shadow: this.getPinShadow(),
+          position : this.getPlaceCoordinates(),
+          map : map
+        });
+        console.log("initLoadMap: created marker ", marker,  {
+          icon: this.getPinImage(),
+          shadow: this.getPinShadow(),
+          position : this.getPlaceCoordinates(),
+          map : map
+        });
+      } catch (error) {
+        console.error("initLoadMap ", error);
+      }
+    } 
   }
 }
 

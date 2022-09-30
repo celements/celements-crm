@@ -94,18 +94,43 @@ export class CelGoogleMapsViewer {
     }, this.mapOptions);
   }
   
+  getRteDescriptionTemplate() {
+    return this.getMapsContainer().parent.querySelector('template.gMapsRteDescription');
+  }
+  
+  hasRteDescriptionTemplate() {
+    const rteDesc = getRteDescriptionTemplate();
+    console.debug('hasRteDescriptionTemplate: ', rteDesc);
+    return rteDesc  && rteDesc.content && (rteDesc.content !== '');
+  }
+
+  getInfoWindow() {
+    const descElem = document.createElement('div');
+    descElem.style = "height:180px;width: 290px;";
+    descElem.class = "cel_googleMap";
+    descElem.replaceChildren(this.getRteDescriptionTemplate().content.cloneNode(true));
+    return new google.maps.InfoWindow({
+      content : descElem
+    });
+  }
+  
   initLoadMap() {
     if (this.getMapsContainer()) {
       try {
         // Create the Google Map using out element and options defined above
         console.info('initLoadMap with options ', this.getMapOptions());
         const map = new google.maps.Map(this.getMapsContainer(), this.getMapOptions());
-        new google.maps.Marker({
+        const marker = new google.maps.Marker({
           icon: this.getPinImage(),
           shadow: this.getPinShadow(),
           position : this.getPlaceCoordinates(),
           map : map
         });
+        if (this.hasRteDescriptionTemplate()) {
+          const iw = this.getInfoWindow();
+          google.maps.event.addListener(marker, 'click', () => iw.open(map, marker));
+          iw.open(map, marker);
+        }
       } catch (error) {
         console.error("initLoadMap ", error);
       }

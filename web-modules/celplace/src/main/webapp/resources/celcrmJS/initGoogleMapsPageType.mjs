@@ -102,8 +102,10 @@ export class CelGoogleMapsViewer {
 }
 
 if (['complete', 'interactive'].includes(document.readyState)) {
+  console.debug("initGoogleMaps in dynamic mode loaded imediately", document.readyState);
   new CelGoogleMapsViewer().load();
 } else {
+  console.debug("initGoogleMaps in sync mode loaded on defer ", document.readyState);
   const mapsViewer = new CelGoogleMapsViewer();
   document.addEventListener('DOMContentLoaded', () => mapsViewer.load());
 }

@@ -9,6 +9,7 @@ export class CelGoogleMapsViewer {
     this.mapsContainerSelector = theOpt.mapsContainerSelector ?? '#googleMapsContainer';
     this.pinColor = theOpt.pinColor ?? "FF0505";
     this.mapOptions = theOpt.mapOptions ?? {};
+    this.mapOptions.styles = this.mapOptions.styles ?? getMapStyles();
   }
 
   load() {
@@ -26,6 +27,18 @@ export class CelGoogleMapsViewer {
     }
   }
 
+  getMapStyles() {
+    const attrStyle = this.getMapsContainer().dataset.styles;
+    if (attrStyle) {
+      try {
+        return JSON.parse(attrStyle);
+      } catch (error) {
+        console.error('failed to parse styles', error);
+      }
+    }
+    return [];
+  }
+
   getMapsContainer() {
     // Get the HTML DOM element that will contain your map
     // We are using a div with id="map" seen below in the <body>
@@ -33,11 +46,11 @@ export class CelGoogleMapsViewer {
   }
 
   getLongitude() {
-   return parseFloat(this.getMapsContainer().getAttribute("data-longitude"));
+   return parseFloat(this.getMapsContainer().dataset.longitude);
   }
 
   getLatitude() {
-   return parseFloat(this.getMapsContainer().getAttribute("data-latitude"));
+   return parseFloat(this.getMapsContainer().dataset.latitude);
   }
   
   getPlaceCoordinates() {

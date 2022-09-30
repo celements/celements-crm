@@ -6,12 +6,10 @@ export class CelGoogleMapsViewer {
   mapOptions;
   
   constructor(options) {
-    console.debug("start constructor");
     const theOpt = options ?? {};
     this.mapsContainerSelector = theOpt.mapsContainerSelector ?? '#googleMapsContainer';
     this.pinColor = theOpt.pinColor ?? "FF0505";
     this.mapOptions = theOpt.mapOptions ?? {};
-    console.debug("end constructor");
   }
 
   load() {
@@ -81,18 +79,11 @@ export class CelGoogleMapsViewer {
   }
   
   initLoadMap() {
-    console.debug("start initLoadMap ", this.getMapsContainer());
     if (this.getMapsContainer()) {
       try {
         // Create the Google Map using out element and options defined above
         const map = new google.maps.Map(this.getMapsContainer(), this.getMapOptions());
-        const marker = new google.maps.Marker({
-          icon: this.getPinImage(),
-          shadow: this.getPinShadow(),
-          position : this.getPlaceCoordinates(),
-          map : map
-        });
-        console.log("initLoadMap: created marker ", marker,  {
+        new google.maps.Marker({
           icon: this.getPinImage(),
           shadow: this.getPinShadow(),
           position : this.getPlaceCoordinates(),
@@ -106,7 +97,7 @@ export class CelGoogleMapsViewer {
 }
 
 if (['complete', 'interactive'].includes(document.readyState)) {
-  console.debug("initGoogleMaps in dynamic mode loaded imediately", document.readyState);
+  console.debug("initGoogleMaps in dynamic mode loaded immediately", document.readyState);
   new CelGoogleMapsViewer().load();
 } else {
   console.debug("initGoogleMaps in sync mode loaded on defer ", document.readyState);

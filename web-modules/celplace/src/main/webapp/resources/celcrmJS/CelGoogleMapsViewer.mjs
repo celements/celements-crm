@@ -9,7 +9,7 @@ export class CelGoogleMapsViewer {
     this.mapsContainerSelector = theOpt.mapsContainerSelector ?? '#googleMapsContainer';
     this.pinColor = theOpt.pinColor ?? "FF0505";
     this.mapOptions = theOpt.mapOptions ?? {};
-    this.mapOptions.styles = this.mapOptions.styles ?? getMapStyles();
+    this.mapOptions.styles = this.mapOptions.styles ?? this.getMapStyles();
   }
 
   load() {
@@ -80,17 +80,21 @@ export class CelGoogleMapsViewer {
         style : google.maps.ZoomControlStyle.SMALL,
         position : google.maps.ControlPosition.LEFT_CENTER,
       },
-      mapTypeControl : false,
       disableDoubleClickZoom : true,
+      mapTypeControl : false,
+      mapTypeControlOptions : {
+        style : google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+      },
       scaleControl : true,
       scrollwheel : false,
       panControl : false,
       streetViewControl : false,
       draggable : false,
       mapTypeId : google.maps.MapTypeId.ROADMAP,
-      mapTypeControlOptions : {
-        style : google.maps.MapTypeControlStyle.DROPDOWN_MENU,
-      },
+      overviewMapControl : false,
+      overviewMapControlOptions : {
+        opened : false,
+      }
     }, this.mapOptions);
   }
   

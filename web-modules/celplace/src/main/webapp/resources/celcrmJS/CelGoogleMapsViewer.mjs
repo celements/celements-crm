@@ -86,7 +86,8 @@ export class CelGoogleMapsViewer {
       scrollwheel : false,
       panControl : false,
       streetViewControl : false,
-      draggable : false
+      draggable : false,
+      mapTypeId : google.maps.MapTypeId.ROADMAP
     }, this.mapOptions);
   }
   

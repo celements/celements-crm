@@ -5,7 +5,7 @@ export class CelGoogleMapsViewer {
   pinColor;
   mapOptions;
   
-  construtor(options) {
+  constructor(options) {
     console.debug("start constructor");
     const theOpt = options ?? {};
     this.mapsContainerSelector = theOpt.mapsContainerSelector ?? '#googleMapsContainer';

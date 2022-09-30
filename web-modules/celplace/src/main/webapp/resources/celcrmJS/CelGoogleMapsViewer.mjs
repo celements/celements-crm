@@ -103,7 +103,7 @@ export class CelGoogleMapsViewer {
   }
   
   hasRteDescriptionTemplate() {
-    const rteDesc = getRteDescriptionTemplate();
+    const rteDesc = this.getRteDescriptionTemplate();
     console.debug('hasRteDescriptionTemplate: ', rteDesc);
     return rteDesc  && rteDesc.content && (rteDesc.content !== '');
   }

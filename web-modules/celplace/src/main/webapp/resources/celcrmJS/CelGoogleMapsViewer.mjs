@@ -87,7 +87,10 @@ export class CelGoogleMapsViewer {
       panControl : false,
       streetViewControl : false,
       draggable : false,
-      mapTypeId : google.maps.MapTypeId.ROADMAP
+      mapTypeId : google.maps.MapTypeId.ROADMAP,
+      mapTypeControlOptions : {
+        style : google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+      },
     }, this.mapOptions);
   }
   
@@ -95,6 +98,7 @@ export class CelGoogleMapsViewer {
     if (this.getMapsContainer()) {
       try {
         // Create the Google Map using out element and options defined above
+        console.info('initLoadMap with options ', this.getMapOptions());
         const map = new google.maps.Map(this.getMapsContainer(), this.getMapOptions());
         new google.maps.Marker({
           icon: this.getPinImage(),

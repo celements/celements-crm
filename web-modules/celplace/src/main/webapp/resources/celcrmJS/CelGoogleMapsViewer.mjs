@@ -36,6 +36,7 @@ export class CelGoogleMapsViewer {
         console.error('failed to parse styles', error);
       }
     }
+    console.debug('getMapStyles returning empty array');
     return [];
   }
 
@@ -99,7 +100,7 @@ export class CelGoogleMapsViewer {
   }
   
   getRteDescriptionTemplate() {
-    return this.getMapsContainer().parent.querySelector('template.gMapsRteDescription');
+    return this.getMapsContainer().parentNode.querySelector('template.gMapsRteDescription');
   }
   
   hasRteDescriptionTemplate() {

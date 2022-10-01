@@ -18,4 +18,7 @@ $!jsService.includeExtJsFile($extJsParamSync.setJsFile(':celcrmJS/initGoogleMaps
   <!-- MAP -->
   <div id="googleMapsContainer" data-longitude="$!geotagObj.getProperty('longitude').getValue()"##
    data-latitude="$!geotagObj.getProperty('latitude').getValue()"></div>
+   <template class="gMapsRteDescription">
+     <p>the description in the template</p>
+   </template>
 #end

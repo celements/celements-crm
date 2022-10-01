@@ -1,4 +1,4 @@
-import { CelGoogleMapsViewer } from "./CelGoogleMapsViewer.mjs?version=2022100110212";
+import { CelGoogleMapsViewer } from "./CelGoogleMapsViewer.mjs?version=202210011044";
 
 const modernBlackWhiteStyle =  [ {
         "featureType" : "landscape",

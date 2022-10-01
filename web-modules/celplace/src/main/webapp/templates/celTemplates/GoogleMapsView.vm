@@ -21,7 +21,7 @@ $!jsService.includeExtJsFile($extJsParamSync.setJsFile(':celcrmJS/initGoogleMaps
   <!-- MAP -->
   <div id="googleMapsContainer" data-longitude="$!geotagObj.getProperty('longitude').getValue()"##
    data-latitude="$!geotagObj.getProperty('latitude').getValue()"></div>
-   #if("$!extractObj.getProperty('extract').getValue()" != ""))
+   #if("$!extractObj.getProperty('extract').getValue()" != "")
      <template class="gMapsRteDescription">$!extractObj.getProperty('extract').getValue()</template>
    #end
 #end

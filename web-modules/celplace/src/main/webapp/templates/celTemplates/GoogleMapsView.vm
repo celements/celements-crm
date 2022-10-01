@@ -8,16 +8,17 @@ $!jsService.includeExtJsFile($extJsParamSync.setJsFile(':celcrmJS/initGoogleMaps
 
 #parse("celTemplates/RichTextView.vm")
 #if("$!celldoc" != "")
-  #set($docRef = $celldoc.getDocumentReference())
-  #set($extractObj = $celldoc.getObject('Classes.DocumentExtract', "language", $language, false))
+  #set($theDoc = $celldoc)
 #else
-  #set($docRef = $doc.getDocumentReference())
-  #set($extractObj = $doc.getObject('Classes.DocumentExtract', "language", $language, false))
+  #set($theDoc = $doc)
 #end
+#set($docRef = $theDoc.getDocumentReference())
+#set($extractClassRef = $services.reference.create().space("Classes").doc("DocumentExtract").build())
+#set($extractObj = $services.modelAccess.getObject($docRef, $extractClassRef, "language", $language))
 #set($geotagClassDocRef = $!services.crmplace.geoTagClassRef.docRef)
 #if("$!geotagClassDocRef" != "")
   #set($geotagObj = $services.modelAccess.getObject($docRef, $geotagClassDocRef))
-  <!-- MAP : $extractObj -->
+  <!-- MAP 1.10.2022 : $theDoc , $extractObj , $language -->
   <div id="googleMapsContainer" data-longitude="$!geotagObj.getProperty('longitude').getValue()"##
    data-latitude="$!geotagObj.getProperty('latitude').getValue()"></div>
    #if("$!extractObj.getProperty('extract').getValue()" != ""))

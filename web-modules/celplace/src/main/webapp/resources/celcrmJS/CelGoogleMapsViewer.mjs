@@ -33,10 +33,9 @@ export class CelGoogleMapsViewer {
       try {
         return JSON.parse(attrStyle);
       } catch (error) {
-        console.error('failed to parse styles', error);
+        console.error('getMapStyles failed to parse styles', error);
       }
     }
-    console.debug('getMapStyles returning empty array');
     return [];
   }
 
@@ -95,7 +94,6 @@ export class CelGoogleMapsViewer {
   
   hasRteDescriptionTemplate() {
     const rteDesc = this.getRteDescriptionTemplate();
-    console.debug('hasRteDescriptionTemplate: ', rteDesc);
     return rteDesc  && rteDesc.content && (rteDesc.content !== '');
   }
 
@@ -113,7 +111,6 @@ export class CelGoogleMapsViewer {
     if (this.getMapsContainer()) {
       try {
         // Create the Google Map using out element and options defined above
-        console.debug('initLoadMap with options ', this.getMapOptions());
         const map = new google.maps.Map(this.getMapsContainer(), this.getMapOptions());
         const marker = new google.maps.Marker({
           icon: this.getPinImage(),

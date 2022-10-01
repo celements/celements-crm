@@ -1,4 +1,4 @@
-import { CelGoogleMapsViewer } from "./CelGoogleMapsViewer.mjs?version=202209301755";
+import { CelGoogleMapsViewer } from "./CelGoogleMapsViewer.mjs?version=2022100108265";
 
 const modernBlackWhiteStyle =  [ {
         "featureType" : "landscape",
@@ -56,11 +56,12 @@ const modernBlackWhiteStyle =  [ {
         } ]
       } ];
 
+const options = { mapOptions : { styles : modernBlackWhiteStyle }};
 if (['complete', 'interactive'].includes(document.readyState)) {
   console.debug("initGoogleMaps in dynamic mode loaded immediately", document.readyState);
-  new CelGoogleMapsViewer({ styles : modernBlackWhiteStyle }).load();
+  new CelGoogleMapsViewer(options).load();
 } else {
   console.debug("initGoogleMaps in sync mode loaded on defer ", document.readyState);
-  const mapsViewer = new CelGoogleMapsViewer({ mapOptions : { styles : modernBlackWhiteStyle }});
+  const mapsViewer = new CelGoogleMapsViewer(options);
   document.addEventListener('DOMContentLoaded', () => mapsViewer.load());
 }

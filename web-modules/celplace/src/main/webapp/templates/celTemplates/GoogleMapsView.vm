@@ -17,7 +17,7 @@ $!jsService.includeExtJsFile($extJsParamSync.setJsFile(':celcrmJS/initGoogleMaps
 #set($geotagClassDocRef = $!services.crmplace.geoTagClassRef.docRef)
 #if("$!geotagClassDocRef" != "")
   #set($geotagObj = $services.modelAccess.getObject($docRef, $geotagClassDocRef))
-  <!-- MAP -->
+  <!-- MAP : $!extractObj -->
   <div id="googleMapsContainer" data-longitude="$!geotagObj.getProperty('longitude').getValue()"##
    data-latitude="$!geotagObj.getProperty('latitude').getValue()"></div>
    #if("$!extractObj.getProperty('extract').getValue()" != ""))

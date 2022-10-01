@@ -9,9 +9,7 @@ export class CelGoogleMapsViewer {
     this.mapsContainerSelector = theOpt.mapsContainerSelector ?? '#googleMapsContainer';
     this.pinColor = theOpt.pinColor ?? "FF0505";
     this.mapOptions = theOpt.mapOptions ?? {};
-    console.debug('constructor google maps1: styles ', this.mapOptions.styles, options.styles);
     this.mapOptions.styles = this.mapOptions.styles ?? this.getMapStyles();
-    console.debug('constructor google maps2: styles ', this.mapOptions.styles, options.styles);
   }
 
   load() {

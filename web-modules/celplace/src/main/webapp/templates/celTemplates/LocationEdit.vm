@@ -1,3 +1,4 @@
+#parse("celMacros/includeCelementsRTE.vm")
 #set($structDataEditorSpaceRef = $services.model.createDocumentReference('','LocationEditorLayout','').getLastSpaceReference())
 #set($structDataEditorSpace = $structDataEditorSpaceRef.getName())
 #if($services.layout.canRenderLayout($structDataEditorSpaceRef))

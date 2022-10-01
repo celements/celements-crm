@@ -10,6 +10,7 @@ export class CelGoogleMapsViewer {
     this.pinColor = theOpt.pinColor ?? "FF0505";
     this.mapOptions = theOpt.mapOptions ?? {};
     this.mapOptions.styles = this.mapOptions.styles ?? this.getMapStyles();
+    console.debug('constructor google maps: styles ', this.mapOptions.styles, options.styles);
   }
 
   load() {

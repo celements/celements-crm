@@ -73,15 +73,10 @@ export class CelGoogleMapsViewer {
   }
   
   getMapOptions() {
-//      mapTypeId : google.maps.MapTypeId.ROADMAP,
     return Object.assign({
       center : this.getPlaceCoordinates(),
       zoom : 16,
       zoomControl : false,
-      zoomControlOptions : {
-        style : google.maps.ZoomControlStyle.SMALL,
-        position : google.maps.ControlPosition.LEFT_CENTER,
-      },
       disableDoubleClickZoom : true,
       mapTypeControl : false,
       scaleControl : true,
@@ -89,7 +84,8 @@ export class CelGoogleMapsViewer {
       panControl : false,
       streetViewControl : false,
       draggable : false,
-      overviewMapControl : false
+      overviewMapControl : false,
+      mapTypeId : google.maps.MapTypeId.ROADMAP
     }, this.mapOptions);
   }
   

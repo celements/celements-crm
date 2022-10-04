@@ -112,6 +112,10 @@ export class CelGoogleMapsViewer {
       try {
         // Create the Google Map using out element and options defined above
         const map = new google.maps.Map(this.getMapsContainer(), this.getMapOptions());
+        //Loads custom zoom controls
+        const zoomDiv = document.createElement('div');
+        zoomDiv.index = 1;
+        map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(zoomDiv);
         const marker = new google.maps.Marker({
           icon: this.getPinImage(),
           shadow: this.getPinShadow(),

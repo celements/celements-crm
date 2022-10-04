@@ -99,8 +99,9 @@ export class CelGoogleMapsViewer {
 
   getInfoWindow() {
     const descElem = document.createElement('div');
-    descElem.style = "height:180px;width: 290px;";
-    descElem.class = "cel_googleMap";
+    descElem.style.height = "180px";
+    descElem.style.width = "290px";
+    descElem.classList.add("cel_googleMap");
     descElem.replaceChildren(this.getRteDescriptionTemplate().content.cloneNode(true));
     return new google.maps.InfoWindow({
       content : descElem

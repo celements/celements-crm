@@ -5,13 +5,13 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
-import org.apache.commons.lang.StringUtils;
 import org.xwiki.component.annotation.Component;
 import org.xwiki.component.annotation.Requirement;
 
 import com.celements.metatag.MetaTag;
 import com.celements.metatag.MetaTagProviderRole;
 import com.celements.model.context.ModelContext;
+import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 
 @Component(GoogleMapsApiKeyMetaTagService.NAME)
@@ -30,7 +30,7 @@ public class GoogleMapsApiKeyMetaTagService implements MetaTagProviderRole {
   }
 
   boolean hasGoogleMapsApiKey() {
-    return !StringUtils.isEmpty(getGoogleMapsApiKey());
+    return !Strings.isNullOrEmpty(getGoogleMapsApiKey());
   }
 
   String getGoogleMapsApiKey() {

@@ -48,7 +48,7 @@ export class CelGoogleMapsViewer {
   }
   
   addStylesTemplate(templName, template) {
-    this.#stylesTemplates.put(templName, template);
+    this.#stylesTemplates[templName] =  template;
   }
 
   getMapsContainer() {

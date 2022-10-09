@@ -44,6 +44,8 @@ export class CelGoogleMapsViewer {
     }
     const attrStyleTempl = this.getMapsContainer().dataset.styleTemplate ??
        this.mapOptions.styleTemplate ?? 'defaultStyle';
+    console.log('getMapStyles: ', this.getMapsContainer().dataset.styleTemplate,
+      this.mapOptions.styleTemplate, attrStyleTempl, this.#stylesTemplates[attrStyleTempl]);
     return this.#stylesTemplates[attrStyleTempl];
   }
   

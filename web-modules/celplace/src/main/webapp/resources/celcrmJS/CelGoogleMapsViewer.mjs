@@ -3,8 +3,13 @@ export class CelGoogleMapsViewer {
   mapsContainerSelector;
   pinColor;
   mapOptions;
+  #stylesTemplates;
   
-  constructor(options) {
+  constructor() {
+    this.#stylesTemplates = {'defaultStyle' : []};
+  }
+  
+  setOptions(options) {
     const theOpt = options ?? {};
     this.mapsContainerSelector = theOpt.mapsContainerSelector ?? '#googleMapsContainer';
     this.pinColor = theOpt.pinColor ?? "FF0505";
@@ -12,7 +17,8 @@ export class CelGoogleMapsViewer {
     this.mapOptions.styles = this.mapOptions.styles ?? this.getMapStyles();
   }
 
-  load() {
+  load(options) {
+    this.setOptions(options);
     const metas = document.querySelectorAll('meta[name="cel-GMaps-ApiKey"]');
     if ((metas.length > 0) && (metas[0].content !== '')) {
       const gMapsApiKey = metas[0].content;
@@ -36,7 +42,13 @@ export class CelGoogleMapsViewer {
         console.error('getMapStyles failed to parse styles', error);
       }
     }
-    return [];
+    const attrStyleTempl = this.getMapsContainer().dataset.styleTemplate ??
+       this.mapOptions.styleTemplate ?? 'defaultStyle';
+    return this.#stylesTemplates[attrStyleTempl];
+  }
+  
+  addStylesTemplate(templName, template) {
+    this.#stylesTemplates.put(templName, template);
   }
 
   getMapsContainer() {

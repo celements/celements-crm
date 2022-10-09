@@ -1,4 +1,4 @@
-import { CelGoogleMapsViewer } from "./CelGoogleMapsViewer.mjs?version=202210091917";
+import { CelGoogleMapsViewer } from "./CelGoogleMapsViewer.mjs?version=202210092119";
 
 const modernBlackWhite =  [ {
         "featureType" : "landscape",
@@ -56,8 +56,8 @@ const modernBlackWhite =  [ {
         } ]
       } ];
 
-const googleMapViewer = new CelGoogleMapsViewer().addStylesTemplate("modernBlackWhite",
-  modernBlackWhite);
+const googleMapViewer = new CelGoogleMapsViewer();
+googleMapViewer.addStylesTemplate("modernBlackWhite", modernBlackWhite);
 
 const options = { styleTemplate : 'modernBlackWhite' };
 if (['complete', 'interactive'].includes(document.readyState)) {

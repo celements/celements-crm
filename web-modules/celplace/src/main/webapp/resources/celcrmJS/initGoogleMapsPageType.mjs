@@ -1,4 +1,4 @@
-import { CEL_GOOGLE_MAPS_STYLER, CelGoogleMapsViewer } from "./CelGoogleMapsViewer.mjs?version=202210100633";
+import { CelGoogleMapsViewer } from "./CelGoogleMapsViewer.mjs?version=202210100633";
 
 const googleMapViewer = new CelGoogleMapsViewer();
 if (['complete', 'interactive'].includes(document.readyState)) {

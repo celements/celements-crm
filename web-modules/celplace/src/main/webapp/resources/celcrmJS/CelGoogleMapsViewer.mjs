@@ -1,26 +1,37 @@
-export class CelGoogleMapsViewer {
-  
-  mapsContainerSelector;
-  pinColor;
-  mapOptions;
+class CelGoogleMapsStyler {
   #stylesTemplates;
-  #stylesTemplateName;
-
+  
   constructor() {
     this.#stylesTemplates = {'defaultStyle' : []};
   }
   
-  setOptions(options) {
-    const theOpt = options ?? {};
-    this.mapsContainerSelector = theOpt.mapsContainerSelector ?? '#googleMapsContainer';
-    this.pinColor = theOpt.pinColor ?? "FF0505";
-    this.#stylesTemplateName = theOpt.styleTemplate;
-    this.mapOptions = theOpt.mapOptions ?? {};
-    this.mapOptions.styles = this.mapOptions.styles ?? this.getMapStyles();
+  addStylesTemplate(templName, template) {
+    this.#stylesTemplates[templName] =  template;
   }
 
-  load(options) {
-    this.setOptions(options);
+  getStylesForName(templName) {
+    return this.#stylesTemplates[templName];
+  }
+}
+
+export const CEL_GOOGLE_MAPS_STYLER = new CelGoogleMapsStyler();
+
+export class CelGoogleMapsViewer {
+  
+  #mapsContainerSelector;
+  #pinColor;
+  #mapOptions;
+  #stylesTemplateName;
+
+  constructor(options) {
+    const theOpt = options ?? {};
+    this.#mapsContainerSelector = theOpt.mapsContainerSelector ?? '#googleMapsContainer';
+    this.#pinColor = theOpt.pinColor ?? "FF0505";
+    this.#stylesTemplateName = theOpt.styleTemplate;
+    this.#mapOptions = theOpt.mapOptions ?? {};
+  }
+
+  load() {
     const metas = document.querySelectorAll('meta[name="cel-GMaps-ApiKey"]');
     if ((metas.length > 0) && (metas[0].content !== '')) {
       const gMapsApiKey = metas[0].content;
@@ -46,19 +57,13 @@ export class CelGoogleMapsViewer {
     }
     const attrStyleTempl = this.getMapsContainer().dataset.styleTemplate ??
        this.#stylesTemplateName ?? 'defaultStyle';
-    console.log('getMapStyles: ', this.getMapsContainer().dataset.styleTemplate,
-      this.#stylesTemplateName, attrStyleTempl, this.#stylesTemplates[attrStyleTempl]);
-    return this.#stylesTemplates[attrStyleTempl];
+    return CEL_GOOGLE_MAPS_STYLER.getStylesForName(attrStyleTempl);
   }
   
-  addStylesTemplate(templName, template) {
-    this.#stylesTemplates[templName] =  template;
-  }
-
   getMapsContainer() {
     // Get the HTML DOM element that will contain your map
     // We are using a div with id="map" seen below in the <body>
-    return document.body.querySelector(this.mapsContainerSelector);
+    return document.body.querySelector(this.#mapsContainerSelector);
   }
 
   getLongitude() {
@@ -74,7 +79,7 @@ export class CelGoogleMapsViewer {
   }
   
   getPinImage() {
-    return new google.maps.MarkerImage("https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + this.pinColor,
+    return new google.maps.MarkerImage("https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + this.#pinColor,
         new google.maps.Size(21, 34),
         new google.maps.Point(0,0),
         new google.maps.Point(10, 34));
@@ -88,7 +93,7 @@ export class CelGoogleMapsViewer {
   }
   
   getMapOptions() {
-    return Object.assign({
+    const mapOptions = Object.assign({
       center : this.getPlaceCoordinates(),
       zoom : 16,
       zoomControl : false,
@@ -101,7 +106,9 @@ export class CelGoogleMapsViewer {
       draggable : false,
       overviewMapControl : false,
       mapTypeId : google.maps.MapTypeId.ROADMAP
-    }, this.mapOptions);
+    }, this.#mapOptions);
+    mapOptions.styles = this.#mapOptions.styles ?? this.getMapStyles();
+    return mapOptions;
   }
   
   getRteDescriptionTemplate() {

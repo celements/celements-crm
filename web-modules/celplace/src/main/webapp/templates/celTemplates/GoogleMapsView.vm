@@ -1,19 +1,30 @@
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDigOJfK9hDW2vO6W5US6bOdeUNLMGAg_4&amp;sensor=false&amp;callback=initLoadMap"></script>
-
 <link rel="stylesheet" type="text/css" href="$services.celementsweb.getSkinFile(':celcrmRes/googleMapsPageType.css', 'file')">
-$services.javascript.addExtJSfileOnce(':celcrmJS/initGoogleMapsPageType.js', 'file')
+<cel-lazy-load-css src="$!services.celementsweb.getSkinFile(':celcrmRes/googleMapsPageType.css', 'file')"></cel-lazy-load-css>
+
+#set($jsService = $services.javascript)
+#set($extJsParamSync = $!jsService.createExtJSParam().setAction('file'))
+$!jsService.includeExtJsFile($extJsParamSync.setJsFile(':celcrmJS/initGoogleMapsPageType.mjs'))##
+<cel-lazy-load-js load-mode="defer" src="$!services.celementsweb.getSkinFile(':celcrmJS/initGoogleMapsPageType.mjs', 'file')"></cel-lazy-load-js>
 
 #parse("celTemplates/RichTextView.vm")
 #if("$!celldoc" != "")
-  #set($docRef = $celldoc.getDocumentReference())
+  #set($theDoc = $celldoc)
 #else
-  #set($docRef = $doc.getDocumentReference())
+  #set($theDoc = $doc)
 #end
-#set($geotagClass = $services.crmplace.getGeotagClassDefinition())
-#if("$!geotagClass" != "")
-  #set($geotagClassRef = $geotagClass.getDocRef())
-  #set($geotagObj = $services.modelAccess.getObject($docRef, $geotagClassRef))
-
+#set($docRef = $theDoc.getDocumentReference())
+#set($geotagClassDocRef = $!services.crmplace.geoTagClassRef.docRef)
+#if("$!geotagClassDocRef" != "")
+  #set($geotagObj = $services.modelAccess.getObject($docRef, $geotagClassDocRef))
+  #set($extractClassRef = $services.reference.create().space("Classes").doc("DocumentExtract").build())
+  #set($extractObj = $services.modelAccess.getObject($docRef, $extractClassRef, "language", $language))
+  #set($locConfigClassRef = $services.reference.create().space("CelementsPlaces").doc("LocationConfigClass").build())
+  #set($locConfigObj = $services.modelAccess.getObject($docRef, $locConfigClassRef))
   <!-- MAP -->
-  <div id="googleMapsContainer" data-longitude="$!geotagObj.getProperty('longitude').getValue()" data-latitude="$!geotagObj.getProperty('latitude').getValue()"></div>
+  <div id="googleMapsContainer" data-longitude="$!geotagObj.getProperty('longitude').getValue()"##
+   data-latitude="$!geotagObj.getProperty('latitude').getValue()"##
+   data-style-template="$!locConfigObj.getProperty('mapsStyleTemplate').getValue()"></div>
+   #if("$!extractObj.getProperty('extract').getValue()" != "")
+     <template class="gMapsRteDescription">$!extractObj.getProperty('extract').getValue()</template>
+   #end
 #end

@@ -36,13 +36,4 @@ public class LocationConfigClass extends AbstractClassDefinition implements CelP
     return false;
   }
 
-  @Override
-  protected String getClassSpaceName() {
-    return CLASS_SPACE;
-  }
-
-  @Override
-  protected String getClassDocName() {
-    return DOC_NAME;
-  }
 }

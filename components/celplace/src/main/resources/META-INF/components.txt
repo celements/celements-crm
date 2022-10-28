@@ -10,4 +10,4 @@ com.celements.crm.place.classes.GeotagClass
 com.celements.crm.place.classes.LocationConfigClass
 com.celements.crm.place.PlaceScriptService
 com.celements.crm.place.LocationPageType
-com.celements.crm.place.GoogleMapsApiKeyMetaTagService
+com.celements.crm.place.GoogleMapsApiKeyMetaTagProvider

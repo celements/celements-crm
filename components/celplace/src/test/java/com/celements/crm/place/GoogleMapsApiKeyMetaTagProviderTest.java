@@ -15,19 +15,19 @@ import com.celements.metatag.MetaTag;
 import com.celements.metatag.MetaTagProviderRole;
 import com.xpn.xwiki.web.Utils;
 
-public class GoogleMapsApiKeyMetaTagTest extends AbstractComponentTest {
+public class GoogleMapsApiKeyMetaTagProviderTest extends AbstractComponentTest {
 
-  private GoogleMapsApiKeyMetaTagService gmapsMetaTagSrv;
+  private GoogleMapsApiKeyMetaTagProvider gmapsMetaTagSrv;
 
   @Before
   public void setUp_GoogleMapsApiKeyMetaTagTest() throws Exception {
-    gmapsMetaTagSrv = (GoogleMapsApiKeyMetaTagService) Utils.getComponent(MetaTagProviderRole.class,
-        GoogleMapsApiKeyMetaTagService.NAME);
+    gmapsMetaTagSrv = (GoogleMapsApiKeyMetaTagProvider) Utils.getComponent(MetaTagProviderRole.class,
+        GoogleMapsApiKeyMetaTagProvider.NAME);
   }
 
   @Test
   public void test_hasGoogleMapsApiKey_true() {
-    expect(getWikiMock().getXWikiPreference(GoogleMapsApiKeyMetaTagService.CEL_GOOGLE_MAPS_API_KEY,
+    expect(getWikiMock().getXWikiPreference(GoogleMapsApiKeyMetaTagProvider.CEL_GOOGLE_MAPS_API_KEY,
         "", getContext())).andReturn("sdfasdf");
     replayDefault();
     assertTrue(gmapsMetaTagSrv.hasGoogleMapsApiKey());
@@ -36,7 +36,7 @@ public class GoogleMapsApiKeyMetaTagTest extends AbstractComponentTest {
 
   @Test
   public void test_hasGoogleMapsApiKey_false() {
-    expect(getWikiMock().getXWikiPreference(GoogleMapsApiKeyMetaTagService.CEL_GOOGLE_MAPS_API_KEY,
+    expect(getWikiMock().getXWikiPreference(GoogleMapsApiKeyMetaTagProvider.CEL_GOOGLE_MAPS_API_KEY,
         "", getContext())).andReturn("");
     replayDefault();
     assertFalse(gmapsMetaTagSrv.hasGoogleMapsApiKey());
@@ -47,7 +47,7 @@ public class GoogleMapsApiKeyMetaTagTest extends AbstractComponentTest {
   public void test_getGoogleMapsApiKey_withKey() {
     String expectedApiKey = "E8lkKj2348";
     expect(
-        getWikiMock().getXWikiPreference(eq(GoogleMapsApiKeyMetaTagService.CEL_GOOGLE_MAPS_API_KEY),
+        getWikiMock().getXWikiPreference(eq(GoogleMapsApiKeyMetaTagProvider.CEL_GOOGLE_MAPS_API_KEY),
             eq(""), same(getContext()))).andReturn(expectedApiKey);
     replayDefault();
     assertEquals(expectedApiKey, gmapsMetaTagSrv.getGoogleMapsApiKey());
@@ -57,7 +57,7 @@ public class GoogleMapsApiKeyMetaTagTest extends AbstractComponentTest {
   @Test
   public void test_getGoogleMapsApiKey_noKey() {
     expect(
-        getWikiMock().getXWikiPreference(eq(GoogleMapsApiKeyMetaTagService.CEL_GOOGLE_MAPS_API_KEY),
+        getWikiMock().getXWikiPreference(eq(GoogleMapsApiKeyMetaTagProvider.CEL_GOOGLE_MAPS_API_KEY),
             eq(""), same(getContext()))).andReturn("");
     replayDefault();
     assertEquals("", gmapsMetaTagSrv.getGoogleMapsApiKey());
@@ -74,7 +74,7 @@ public class GoogleMapsApiKeyMetaTagTest extends AbstractComponentTest {
   @Test
   public void test_getHeaderMetaTags_noApiKey() {
     expect(
-        getWikiMock().getXWikiPreference(eq(GoogleMapsApiKeyMetaTagService.CEL_GOOGLE_MAPS_API_KEY),
+        getWikiMock().getXWikiPreference(eq(GoogleMapsApiKeyMetaTagProvider.CEL_GOOGLE_MAPS_API_KEY),
             eq(""), same(getContext()))).andReturn("");
     replayDefault();
     assertEquals(Collections.emptyList(), gmapsMetaTagSrv.getHeaderMetaTags());
@@ -85,7 +85,7 @@ public class GoogleMapsApiKeyMetaTagTest extends AbstractComponentTest {
   public void test_getHeaderMetaTags_withApiKey() {
     String expectedApiKey = "E8lkKj2348";
     expect(
-        getWikiMock().getXWikiPreference(eq(GoogleMapsApiKeyMetaTagService.CEL_GOOGLE_MAPS_API_KEY),
+        getWikiMock().getXWikiPreference(eq(GoogleMapsApiKeyMetaTagProvider.CEL_GOOGLE_MAPS_API_KEY),
             eq(""), same(getContext()))).andReturn(expectedApiKey).atLeastOnce();
     replayDefault();
     List<MetaTag> tagList = gmapsMetaTagSrv.getHeaderMetaTags();

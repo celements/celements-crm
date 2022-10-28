@@ -14,8 +14,8 @@ import com.celements.model.context.ModelContext;
 import com.google.common.base.Strings;
 import com.google.common.collect.ImmutableList;
 
-@Component(GoogleMapsApiKeyMetaTagService.NAME)
-public class GoogleMapsApiKeyMetaTagService implements MetaTagProviderRole {
+@Component(GoogleMapsApiKeyMetaTagProvider.NAME)
+public class GoogleMapsApiKeyMetaTagProvider implements MetaTagProviderRole {
 
   public static final String NAME = "GoogleMapsApiKeyMetaTag";
 

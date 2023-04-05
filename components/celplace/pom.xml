@@ -26,24 +26,24 @@
   <parent>
     <groupId>com.celements</groupId>
     <artifactId>celements</artifactId>
-    <version>5.6</version>
+    <version>5.8</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>celements-crm-place</artifactId>
-  <version>5.2-SNAPSHOT</version>
+  <version>5.3-SNAPSHOT</version>
   <description>Celements Places</description>
   <dependencies>
     <!-- Add here all your dependencies -->
     <dependency>
       <groupId>com.celements</groupId>
       <artifactId>celements-model</artifactId>
-      <version>5.4</version>
+      <version>5.7</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.celements</groupId>
       <artifactId>celements-core</artifactId>
-      <version>5.8</version>
+      <version>5.12</version>
       <scope>provided</scope>
     </dependency>
     <dependency>

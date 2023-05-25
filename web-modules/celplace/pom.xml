@@ -26,14 +26,13 @@
   <parent>
     <groupId>com.celements</groupId>
     <artifactId>celementsweb</artifactId>
-    <version>5.9</version>
+    <version>6.0-SNAPSHOT</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>crm-place-web</artifactId>
   <packaging>war</packaging>
   <name>CRM-Place Web-Module</name>
-  <version>5.6-SNAPSHOT</version>
-  <description>	</description>
+  <version>6.0-SNAPSHOT</version>
   <licenses>
     <license>
       <name>LGPL 2.1</name>
@@ -44,19 +43,14 @@
   <scm>
     <connection>scm:git:git://github.com/celements/celements-crm</connection>
     <developerConnection>scm:git:git@github.com:celements/celements-crm.git</developerConnection>
-    <url>https://github.com/celements/celements-crm</url>
+    <url>https://github.com/celements/celements-crm/web-modules/celplace</url>
     <tag>HEAD</tag>
   </scm>
-  <properties>
-    <platform.core.version>2.33</platform.core.version>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
   <dependencies>
-    <!-- Add here all your dependencies -->
     <dependency>
       <groupId>com.celements</groupId>
       <artifactId>celements-crm-place</artifactId>
-      <version>5.2</version>
+      <version>6.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
   <build>

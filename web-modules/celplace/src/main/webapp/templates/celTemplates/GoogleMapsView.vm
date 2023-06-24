@@ -1,9 +1,4 @@
-<link rel="stylesheet" type="text/css" href="$services.celementsweb.getSkinFile(':celcrmRes/googleMapsPageType.css', 'file')">
 <cel-lazy-load-css src="$!services.celementsweb.getSkinFile(':celcrmRes/googleMapsPageType.css', 'file')"></cel-lazy-load-css>
-
-#set($jsService = $services.javascript)
-#set($extJsParamSync = $!jsService.createExtJSParam().setAction('file'))
-$!jsService.includeExtJsFile($extJsParamSync.setJsFile(':celcrmJS/initGoogleMapsPageType.mjs'))##
 <cel-lazy-load-js load-mode="defer" src="$!services.celementsweb.getSkinFile(':celcrmJS/initGoogleMapsPageType.mjs', 'file')"></cel-lazy-load-js>
 
 #parse("celTemplates/RichTextView.vm")

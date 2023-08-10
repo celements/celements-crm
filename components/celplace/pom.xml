@@ -30,7 +30,7 @@
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>celements-crm-place</artifactId>
-  <version>6.0</version>
+  <version>6.1-SNAPSHOT</version>
   <description>Celements Places</description>
   <dependencies>
     <dependency>
@@ -56,6 +56,6 @@
     <connection>scm:git:git@github.com:celements/celements-crm.git</connection>
     <developerConnection>scm:git:git@github.com:celements/celements-crm.git</developerConnection>
     <url>https://github.com/celements/celements-crm/components/celplace</url>
-    <tag>celements-crm-place-6.0</tag>
+    <tag>HEAD</tag>
   </scm>
 </project>

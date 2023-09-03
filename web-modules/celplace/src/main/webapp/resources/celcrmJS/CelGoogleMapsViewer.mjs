@@ -1,3 +1,5 @@
+import { Loader } from '/file/resources/google/maps';
+
 class CelGoogleMapsStyler {
   #stylesTemplates;
   

@@ -1,4 +1,4 @@
-import { Loader } from '/file/resources/celcrmJS/google/maps/index.esm.mjs?version=1.16.2';
+import { Loader } from '/file/resources/celcrmJS/googlemaps/index.esm.mjs?version=1.16.2';
 
 class CelGoogleMapsStyler {
   #stylesTemplates;

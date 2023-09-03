@@ -1,7 +1,3 @@
-import { CelGoogleMapsViewer } from "./CelGoogleMapsViewer.mjs?version=202309032320";
+import { CelGoogleMapsViewer } from "./CelGoogleMapsViewer.mjs?version=202309032326";
 
-const onReady = callback => (document.readyState === 'loading')
-    ? document.addEventListener('DOMContentLoaded', callback)
-    : callback();
-
-onReady(() => new CelGoogleMapsViewer().load());
+new CelGoogleMapsViewer().load();

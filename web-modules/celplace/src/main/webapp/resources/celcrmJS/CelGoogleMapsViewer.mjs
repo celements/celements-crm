@@ -1,4 +1,4 @@
-import { Loader } from '/file/resources/google/maps';
+import { Loader } from '/file/resources/celcrmJS/google/maps/index.esm.mjs?version=1.16.2';
 
 class CelGoogleMapsStyler {
   #stylesTemplates;
@@ -94,12 +94,27 @@ export class CelGoogleMapsViewer {
     const metas = document.querySelectorAll('meta[name="cel-GMaps-ApiKey"]');
     if ((metas.length > 0) && (metas[0].content !== '')) {
       const gMapsApiKey = metas[0].content;
+      const loader = new Loader({
+        apiKey: gMapsApiKey,
+        version: "weekly",
+        libraries: ["places"]
+      });
+      loader
+        .load()
+        .then((google) => this.initLoadMap(google))
+        .catch(exp => {
+          console.error('Cannot initialize Google Maps.', exp);
+        });
+
+      //old import version
+      /**
       const gmapJsElem = document.createElement('script');
       gmapJsElem.src = 'https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false'
         + '&key=' + gMapsApiKey;
       gmapJsElem.type = 'text/javascript';
       gmapJsElem.addEventListener('load', () => this.initLoadMap());
       document.head.appendChild(gmapJsElem);
+    */
     } else {
       console.warn('Cannot initialize Google Maps, because of Google Maps Api key is missing.');
     }
@@ -190,7 +205,7 @@ export class CelGoogleMapsViewer {
     });
   }
   
-  initLoadMap() {
+  initLoadMap(google) {
     if (this.getMapsContainer()) {
       try {
         // Create the Google Map using out element and options defined above

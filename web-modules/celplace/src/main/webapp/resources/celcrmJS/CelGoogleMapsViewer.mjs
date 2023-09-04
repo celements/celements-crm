@@ -1,3 +1,24 @@
+/*
+ * See the NOTICE file distributed with this work for additional
+ * information regarding copyright ownership.
+ *
+ * This is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as
+ * published by the Free Software Foundation; either version 2.1 of
+ * the License, or (at your option) any later version.
+ *
+ * This software is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this software; if not, write to the Free
+ * Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
+ * 02110-1301 USA, or see the FSF site: http://www.fsf.org.
+ */
+import { Loader } from '/file/resources/celcrmJS/googlemaps/index.esm.mjs?version=1.16.2';
+
 class CelGoogleMapsStyler {
   #stylesTemplates;
   
@@ -92,14 +113,20 @@ export class CelGoogleMapsViewer {
     const metas = document.querySelectorAll('meta[name="cel-GMaps-ApiKey"]');
     if ((metas.length > 0) && (metas[0].content !== '')) {
       const gMapsApiKey = metas[0].content;
-      const gmapJsElem = document.createElement('script');
-      gmapJsElem.src = 'https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false'
-        + '&key=' + gMapsApiKey;
-      gmapJsElem.type = 'text/javascript';
-      gmapJsElem.addEventListener('load', () => this.initLoadMap());
-      document.head.appendChild(gmapJsElem);
+      const loader = new Loader({
+        apiKey: gMapsApiKey,
+        version: "weekly",
+        libraries: ["places"]
+      });
+      loader
+        .load()
+        .then((google) => this.initLoadMap(google))
+        .catch(exp => {
+          console.error('Cannot initialize Google Maps.', exp);
+        });
     } else {
-      console.warn('Cannot initialize Google Maps, because of Google Maps Api key is missing.');
+      console.warn('Cannot initialize Google Maps, because of'
+        + ' Google Maps Api key is missing.');
     }
   }
 
@@ -188,7 +215,7 @@ export class CelGoogleMapsViewer {
     });
   }
   
-  initLoadMap() {
+  initLoadMap(google) {
     if (this.getMapsContainer()) {
       try {
         // Create the Google Map using out element and options defined above

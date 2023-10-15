@@ -32,7 +32,7 @@
   <artifactId>crm-place-web</artifactId>
   <packaging>war</packaging>
   <name>CRM-Place Web-Module</name>
-  <version>6.1-SNAPSHOT</version>
+  <version>6.2-SNAPSHOT</version>
   <licenses>
     <license>
       <name>LGPL 2.1</name>
